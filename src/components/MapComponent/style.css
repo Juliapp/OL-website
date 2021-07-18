@@ -2,6 +2,8 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
+  z-index: 0;
+  position: relative;
 }
 
 .map-container {
@@ -56,9 +58,21 @@
   padding: 6px 12px;
   font-family: monospace;
   z-index: 1;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   margin: 12px;
   border-radius: 4px;
+}
+
+.children-container {
+  background-color: rgba(35, 55, 75, 0.5);
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+  /* height: auto;
+  width: auto; */
+  /* max-width: 100vw;
+  max-height: 100vh; */
 }
