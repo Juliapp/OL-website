@@ -1,12 +1,13 @@
 import React from 'react';
-import MapComponent from './components/MapComponent';
+import Map from './components/Map';
+// import MapComponent from './components/MapComponent';
 
 export default function App() {
   return (
-    <MapComponent>
+    <Map>
       <div className="sidebar">
         Longitude: {0} | Latitude: {0} | Zoom: {0}
       </div>
-    </MapComponent>
+    </Map>
   );
 }
