@@ -1,0 +1,26 @@
+.squared-button {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.squared-button:focus,
+.squared-button:hover {
+  outline: none;
+}
+
+.squared-button:hover {
+  border: 1px solid #90a4ae;
+  background-color: #fafafa;
+}
+
+.squared-button:active {
+  background-color: #b0bec5;
+}

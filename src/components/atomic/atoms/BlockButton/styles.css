@@ -1,0 +1,31 @@
+.block-button {
+  /* position: absolute; */
+  display: flex;
+  flex: 1;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+
+  /* font-size: 24; */
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #00baff;
+}
+
+.block-button:focus,
+.block-button:hover {
+  outline: none;
+}
+
+.block-button:hover {
+  border: 1px solid #90a4ae;
+  background-color: #00b1ff;
+}
+
+.block-button:active {
+  background-color: #0092ff;
+}
