@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Map } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import './styles.css';
-import { BlockButton, LoggiBanner, SquaredButton } from '../atomic/atoms';
+import {
+  BlockButton,
+  LoggiBanner,
+  SquaredButton,
+  ToggleSwitch,
+} from '../atomic/atoms';
 const MapLeaflet: React.FC = () => {
   const [lng, setLng] = useState(-55.0967);
   const [lat, setLat] = useState(-12.4347);
@@ -27,6 +32,8 @@ const MapLeaflet: React.FC = () => {
     { id: 'minsum', value: 'minsum', label: 'Minsum' },
   ];
 
+  const [isOn, setisOn] = useState(false);
+
   return (
     <MapContainer
       className="map-container"
@@ -34,7 +41,6 @@ const MapLeaflet: React.FC = () => {
       zoom={zoom}
       whenCreated={setMap}
     >
-      <BlockButton label="start" />
       <TileLayer
         // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         attribution={`&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>`}
