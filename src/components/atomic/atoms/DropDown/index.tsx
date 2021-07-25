@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-interface IDropDown {
+export interface IDropDown {
   onChange: React.ChangeEventHandler<HTMLSelectElement>;
   options: { id: string; value: string; label: string }[];
   label?: string;

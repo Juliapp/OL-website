@@ -1,7 +1,8 @@
-import DropDown from './DropDown';
+import DropDown, { IDropDown } from './DropDown';
 import LoggiBanner from './LoggiBanner';
-import SquaredButton from './SquaredButton';
-import BlockButton from './BlockButton';
-import ToggleSwitch from './ToggleSwitch';
+import SquaredButton, { ISquaredButton } from './SquaredButton';
+import BlockButton, { IBlockButton } from './BlockButton';
+import ToggleSwitch, { IToggleSwitch } from './ToggleSwitch';
 
 export { DropDown, LoggiBanner, SquaredButton, BlockButton, ToggleSwitch };
+export type { IDropDown, IToggleSwitch, ISquaredButton, IBlockButton };

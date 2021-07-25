@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-interface IBlockButton {
+export interface IBlockButton {
   styles?: React.CSSProperties;
   label?: string;
 }

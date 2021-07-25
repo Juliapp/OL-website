@@ -4,7 +4,7 @@ import './styles.css';
 
 // import { Container } from './styles';
 
-interface IToggleSec {
+export interface IToggleSec {
   isOn?: boolean;
   setIsOn?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
   title?: string;

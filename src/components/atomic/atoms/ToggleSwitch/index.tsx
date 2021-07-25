@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './styles.css';
 
-interface IToggleSwitch {
+export interface IToggleSwitch {
   isOn?: boolean;
   setIsOn?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
   // handleToggle,

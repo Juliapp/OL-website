@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 import { loggiSymbol } from '../../../../assets/index';
 
-interface ISquaredButton {
+export interface ISquaredButton {
   icon?: string;
   styles?: React.CSSProperties;
 }
