@@ -1,18 +1,18 @@
-import React, { ReactEventHandler } from 'react';
+import React from 'react';
 import './styles.css';
 interface IDropDown {
-  onSelected: ReactEventHandler<HTMLSelectElement>;
+  onChange: React.ChangeEventHandler<HTMLSelectElement>;
   options: { id: string; value: string; label: string }[];
   label?: string;
 }
-const DropDown: React.FC<IDropDown> = ({ onSelected, options, label }) => {
+const DropDown: React.FC<IDropDown> = ({ onChange, options, label }) => {
   return (
     <div className="dropContainer forward">
-      <h3>{label && label}</h3>
-      <select name="" onSelect={onSelected} id="" className="forward dropdown">
+      <h2>{label && label}</h2>
+      <select name="select" onChange={onChange} className="forward dropdown">
         {options.map((item) => {
           return (
-            <option id={item.id} value={item.value}>
+            <option id={item.id} value={item.value} key={item.id}>
               {item.label}
             </option>
           );

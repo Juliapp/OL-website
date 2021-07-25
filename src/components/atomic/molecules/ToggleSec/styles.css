@@ -1,0 +1,14 @@
+.toggle-sec-container {
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr;
+}
+
+.title {
+  color: #8fa7b2;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #b8b8b8;
+}

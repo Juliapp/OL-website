@@ -5,6 +5,15 @@
   display: flex;
 }
 
+h3 {
+  font-weight: 300;
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
 .forward {
   z-index: 400 !important;
 }

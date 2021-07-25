@@ -1,12 +1,10 @@
 .dropContainer {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  position: absolute;
   justify-content: center;
 }
 
-.dropContainer h3 {
+.dropContainer h2 {
   /* margin */
   margin-top: 0;
   margin-bottom: 8px;
