@@ -1,6 +1,17 @@
 .toggle-sec-container {
   display: grid;
   grid-template-columns: 6fr 1fr 1fr;
+  align-items: flex-start;
+}
+
+.title-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-description h2,
+.title-description h3 {
+  margin: 0;
 }
 
 .title {

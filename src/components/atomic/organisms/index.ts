@@ -1,3 +1,4 @@
-import QueryForm from './QueryForm';
+import QueryForm, { IQueryForm } from './QueryForm';
 
 export { QueryForm };
+export type { IQueryForm };

@@ -1,18 +1,16 @@
 import React from 'react';
-import { ToggleSwitch } from '../../atoms';
+import { IToggleSwitch, ToggleSwitch } from '../../atoms';
 import './styles.css';
 
 // import { Container } from './styles';
 
-export interface IToggleSec {
-  isOn?: boolean;
-  setIsOn?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
+export interface IToggleSec extends IToggleSwitch {
   title?: string;
   subtitle?: string;
 }
 const ToggleSec: React.FC<IToggleSec> = ({
-  isOn = false,
-  setIsOn,
+  toggled = false,
+  setIsToggled,
   title,
   subtitle,
 }) => {
@@ -23,7 +21,7 @@ const ToggleSec: React.FC<IToggleSec> = ({
         <h3 className="subtitle">{subtitle}</h3>
       </div>
       <div></div>
-      <ToggleSwitch isOn={isOn} setIsOn={setIsOn} />
+      <ToggleSwitch toggled={toggled} setIsToggled={setIsToggled} />
     </div>
   );
 };

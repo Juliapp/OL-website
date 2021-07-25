@@ -1,0 +1,33 @@
+.web-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin: 24px;
+  gap: 8px;
+  right: 0;
+  width: 500px;
+  height: 100vh;
+}
+
+.panel-container {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  /* margin: 16px 0; */
+  padding: 16px 36px;
+}
+
+.form-container,
+.banner {
+  display: flex;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.form-container {
+  margin-top: 8px;
+  padding: 24px 36px;
+}

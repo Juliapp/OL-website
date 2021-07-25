@@ -2,24 +2,27 @@ import React from 'react';
 import './styles.css';
 
 export interface IToggleSwitch {
-  isOn?: boolean;
-  setIsOn?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
+  toggled?: boolean;
+  setIsToggled?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
   // handleToggle,
 }
 
-const ToggleSwitch: React.FC<IToggleSwitch> = ({ isOn = false, setIsOn }) => {
+const ToggleSwitch: React.FC<IToggleSwitch> = ({
+  toggled = false,
+  setIsToggled,
+}) => {
   return (
     <div className="forward switch-container">
       <input
         onChange={() => {
-          setIsOn?.(!isOn);
+          setIsToggled?.(!toggled);
         }}
         className="react-switch-checkbox"
         id={`react-switch-new`}
         type="checkbox"
       />
       <label
-        style={isOn ? { background: '#00BAFF' } : {}}
+        style={toggled ? { background: '#00BAFF' } : {}}
         className="react-switch-label"
         htmlFor={`react-switch-new`}
       >

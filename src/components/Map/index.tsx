@@ -10,6 +10,8 @@ import {
 } from '../atomic/atoms';
 import { ToggleSec } from '../atomic/molecules';
 import { QueryForm } from '../atomic/organisms';
+import { WebOLForm } from '../atomic/templates';
+
 const MapLeaflet: React.FC = () => {
   const [lng, setLng] = useState(-55.0967);
   const [lat, setLat] = useState(-12.4347);
@@ -50,6 +52,15 @@ const MapLeaflet: React.FC = () => {
           setSelectedAlgorithm(event.target.value);
         }}
       /> */}
+      <WebOLForm
+        options={options}
+        onDropDownChange={(event) => {
+          console.log(event.target.value);
+          setSelectedAlgorithm(event.target.value);
+        }}
+        toggled={isOn}
+        setIsToggled={setisOn}
+      />
 
       <TileLayer
         // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

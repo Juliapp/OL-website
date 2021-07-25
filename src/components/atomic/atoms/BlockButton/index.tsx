@@ -3,12 +3,12 @@ import './styles.css';
 
 export interface IBlockButton {
   styles?: React.CSSProperties;
-  label?: string;
+  BButtonLabel?: string;
 }
-const BlockButton: React.FC<IBlockButton> = ({ styles, label }) => {
+const BlockButton: React.FC<IBlockButton> = ({ styles, BButtonLabel }) => {
   return (
     <button style={styles} className="block-button forward">
-      {label && label}
+      {BButtonLabel && BButtonLabel}
     </button>
   );
 };

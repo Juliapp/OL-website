@@ -7,7 +7,7 @@ const LoggiBanner: React.FC = () => {
   return (
     <div className="painel forward">
       <img src={loggiLogo} alt="" />
-      Optimal Location Queries
+      <h2>Optimal Location Queries</h2>
     </div>
   );
 };

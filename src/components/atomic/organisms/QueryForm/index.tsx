@@ -1,37 +1,32 @@
 import React from 'react';
-import { BlockButton, DropDown } from '../../atoms';
-import { ToggleSec } from '../../molecules';
+import { BlockButton, DropDown, IDropDown } from '../../atoms';
+import { IToggleSec, ToggleSec } from '../../molecules';
 import './styles.css';
 
 // import { Container } from './styles';
-interface IQueryForm {
-  isOn?: boolean;
-  setIsOn?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
-  options: { id: string; value: string; label: string }[];
-  onChange: React.ChangeEventHandler<HTMLSelectElement>;
-}
+export interface IQueryForm extends IDropDown, IToggleSec {}
 const QueryForm: React.FC<IQueryForm> = ({
-  isOn,
-  setIsOn,
+  toggled,
+  setIsToggled,
   options,
-  onChange,
+  onDropDownChange,
 }) => {
   return (
     <div className="query-form">
       <ToggleSec
-        isOn={isOn}
-        setIsOn={setIsOn}
+        toggled={toggled}
+        setIsToggled={setIsToggled}
         title="Modo edição de candidatos"
         subtitle="Ative essa opção para adicionar e remover candidatos"
       />
 
       <DropDown
-        label="Algoritmo Optimal Location"
+        dropDownLabel="Algoritmo Optimal Location"
         options={options}
-        onChange={onChange}
+        onDropDownChange={onDropDownChange}
       />
 
-      <BlockButton label="Start" />
+      <BlockButton BButtonLabel="Start" />
     </div>
   );
 };

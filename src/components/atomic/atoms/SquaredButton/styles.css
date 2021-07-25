@@ -1,7 +1,7 @@
 .squared-button {
-  position: absolute;
   width: 56px;
   height: 56px;
+  padding: 12px;
   border-radius: 10px;
   display: flex;
   align-items: center;

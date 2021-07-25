@@ -1,6 +1,6 @@
 .query-form {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 }
