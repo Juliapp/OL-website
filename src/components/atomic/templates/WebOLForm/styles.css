@@ -5,8 +5,8 @@
   margin: 24px;
   gap: 8px;
   right: 0;
-  width: 500px;
-  height: 100vh;
+  /* width: 500px; */
+  width: calc(370px + 64px);
 }
 
 .panel-container {

@@ -1,0 +1,32 @@
+.legend-container {
+  width: calc(370px - 32px);
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 24px;
+  padding: 16px;
+}
+
+.legend-title {
+  display: block;
+  align-self: center;
+  margin: 0;
+}
+
+.legend-item-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.legend-item-container img {
+  width: 16px;
+}
+
+.legend-item-container h3 {
+  margin: 0;
+  margin-left: 8px;
+}
