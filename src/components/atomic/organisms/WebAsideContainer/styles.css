@@ -1,0 +1,17 @@
+.web-header-container {
+  position: absolute;
+  right: 0;
+  margin: 12px;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  gap: 8px;
+  align-items: stretch;
+  width: 434px;
+}
+
+.banner {
+  padding: 16px 36px;
+  background-color: #fff;
+  border-radius: 10px;
+}

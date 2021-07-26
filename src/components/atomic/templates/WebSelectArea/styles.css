@@ -1,0 +1,11 @@
+.select-area-message {
+  margin-top: 12px;
+  padding: 16px 36px;
+  background-color: #00baff;
+  border-radius: 10px;
+}
+
+.select-area-message h2 {
+  margin: 0;
+  color: #fff;
+}
