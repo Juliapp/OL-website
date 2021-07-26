@@ -17,10 +17,9 @@
 }
 
 .squared-button:hover {
-  border: 1px solid #90a4ae;
   background-color: #fafafa;
 }
 
 .squared-button:active {
-  background-color: #b0bec5;
+  background-color: #ececec;
 }

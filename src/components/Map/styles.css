@@ -34,3 +34,16 @@ h2 {
   position: absolute;
   right: 0;
 }
+
+.leaflet-control-attribution {
+  padding: 2px !important;
+}
+
+.leaflet-control-attribution:not(:hover, :focus, :active) {
+  text-decoration: none !important;
+}
+
+.leaflet-container a {
+  padding: 1px;
+  color: black !important;
+}

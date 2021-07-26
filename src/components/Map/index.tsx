@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Map } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import './styles.css';
-import { Legend } from '../atomic/atoms';
+import { AboutPanel, Legend } from '../atomic/atoms';
 import { WebOLForm, WebSelectArea } from '../atomic/templates';
 import {
   algorithmOptions,

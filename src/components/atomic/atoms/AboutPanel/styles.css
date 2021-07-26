@@ -1,0 +1,36 @@
+.about-container {
+  position: fixed;
+  width: 50%;
+  padding: 16px 36px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 64px;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-header h1 {
+  display: block;
+  margin-right: auto;
+}
+
+.about-header img {
+  width: 16px;
+  cursor: pointer;
+  display: flex;
+  margin: auto 0;
+}
+
+.about-text {
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
+.about-text-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0 0 0;
+}

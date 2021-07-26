@@ -4,6 +4,7 @@ import SquaredButton, { ISquaredButton } from './SquaredButton';
 import BlockButton, { IBlockButton } from './BlockButton';
 import ToggleSwitch, { IToggleSwitch } from './ToggleSwitch';
 import Legend from './Legend';
+import AboutPanel from './AboutPanel';
 
 export {
   DropDown,
@@ -12,5 +13,6 @@ export {
   BlockButton,
   ToggleSwitch,
   Legend,
+  AboutPanel,
 };
 export type { IDropDown, IToggleSwitch, ISquaredButton, IBlockButton };
