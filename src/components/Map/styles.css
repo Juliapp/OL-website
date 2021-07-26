@@ -47,3 +47,7 @@ h2 {
   padding: 1px;
   color: black !important;
 }
+
+.leaflet-control-zoom {
+  margin-top: 30vh !important;
+}
