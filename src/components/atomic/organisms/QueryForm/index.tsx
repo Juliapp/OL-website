@@ -32,4 +32,4 @@ const QueryForm: React.FC<IQueryForm> = ({
   );
 };
 
-export default QueryForm;
+export default React.memo(QueryForm);

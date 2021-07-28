@@ -20,4 +20,4 @@ const SquaredButton: React.FC<ISquaredButton> = ({
   );
 };
 
-export default SquaredButton;
+export default React.memo(SquaredButton);

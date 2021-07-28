@@ -26,4 +26,4 @@ const ToggleSec: React.FC<IToggleSec> = ({
   );
 };
 
-export default ToggleSec;
+export default React.memo(ToggleSec);

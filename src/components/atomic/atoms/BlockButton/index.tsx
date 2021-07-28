@@ -13,4 +13,4 @@ const BlockButton: React.FC<IBlockButton> = ({ styles, BButtonLabel }) => {
   );
 };
 
-export default BlockButton;
+export default React.memo(BlockButton);

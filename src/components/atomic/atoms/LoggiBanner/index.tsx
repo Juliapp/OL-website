@@ -12,4 +12,4 @@ const LoggiBanner: React.FC = () => {
   );
 };
 
-export default LoggiBanner;
+export default React.memo(LoggiBanner);

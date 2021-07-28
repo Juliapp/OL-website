@@ -5,6 +5,7 @@
   background-color: #fff;
   border-radius: 10px;
   margin: 64px;
+  z-index: 410 !important;
 }
 
 .about-header {

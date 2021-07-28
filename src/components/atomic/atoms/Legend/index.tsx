@@ -22,4 +22,4 @@ const Legend: React.FC<ILegend> = ({ legendItems }) => {
   );
 };
 
-export default Legend;
+export default React.memo(Legend);
