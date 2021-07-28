@@ -4,12 +4,8 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import './styles.css';
 import { AboutPanel, Legend } from '../atomic/atoms';
 import { WebOLForm, WebSelectArea } from '../atomic/templates';
-import {
-  algorithmOptions,
-  fullScreenBR,
-  HomePageMode,
-  mapLegend,
-} from '../../utils';
+import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
+import { useAlgorithmSelector } from '../../hooks';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
@@ -24,9 +20,7 @@ const MapLeaflet: React.FC = () => {
     map?.flyTo(fullScreenBR.latlng, fullScreenBR.zoom);
   };
 
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState(
-    algorithmOptions[0].value
-  );
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState();
   const [isOn, setisOn] = useState(false);
 
   return (
@@ -37,12 +31,9 @@ const MapLeaflet: React.FC = () => {
       whenCreated={setMap}
     >
       <div className="forward">
-        {mode === HomePageMode.QUERY_FORM ? (
+        {mode === HomePageMode.AREA_SELECTOR ? (
           <WebOLForm
-            options={algorithmOptions}
-            onDropDownChange={(event) => {
-              setSelectedAlgorithm(event.target.value);
-            }}
+            onDropDownChange={(event) => {}}
             toggled={isOn}
             setIsToggled={setisOn}
           />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAlgorithmSelector } from '../../../../hooks';
 import { BlockButton, DropDown, IDropDown } from '../../atoms';
 import { IToggleSec, ToggleSec } from '../../molecules';
 import './styles.css';
@@ -8,9 +9,9 @@ export interface IQueryForm extends IDropDown, IToggleSec {}
 const QueryForm: React.FC<IQueryForm> = ({
   toggled,
   setIsToggled,
-  options,
   onDropDownChange,
 }) => {
+  const options = useAlgorithmSelector();
   return (
     <div className="query-form">
       <ToggleSec

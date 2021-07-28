@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { information } from '../../../../assets';
 import { AboutPanel, LoggiBanner, SquaredButton } from '../../atoms';
 import './styles.css';
 const WebAsideContainer: React.FC = ({ children }) => {
   const [popupAbout, setpopupAbout] = useState(false);
 
-  const togglePopUp = () => {
-    setpopupAbout(!popupAbout);
-  };
+  const togglePopUp = useCallback(() => {
+    setpopupAbout((popupAbout) => !popupAbout);
+  }, []);
 
-  const closePopUp = () => {
+  const closePopUp = useCallback(() => {
     setpopupAbout(false);
-  };
+  }, []);
 
   return (
     <div>

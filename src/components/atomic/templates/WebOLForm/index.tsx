@@ -4,7 +4,6 @@ import './styles.css';
 export interface IWebOLForm extends IQueryForm {}
 const WebOLForm: React.FC<IWebOLForm> = ({
   onDropDownChange,
-  options,
   toggled,
   setIsToggled,
 }) => {
@@ -13,7 +12,6 @@ const WebOLForm: React.FC<IWebOLForm> = ({
       <div className="form-container">
         <QueryForm
           onDropDownChange={onDropDownChange}
-          options={options}
           toggled={toggled}
           setIsToggled={setIsToggled}
         />

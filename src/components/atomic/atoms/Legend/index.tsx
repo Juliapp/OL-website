@@ -11,7 +11,7 @@ const Legend: React.FC<ILegend> = ({ legendItems }) => {
       <div className="legend-items">
         {legendItems?.map((item) => {
           return (
-            <div className="legend-item-container">
+            <div className="legend-item-container" key={item.label}>
               <img src={item.icon} alt="item-icon" />
               <h3>{item.label}</h3>
             </div>

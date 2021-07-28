@@ -2,11 +2,16 @@ import { information } from '../assets';
 
 const fullScreenBR = { latlng: { lng: -55.0967, lat: -12.4347 }, zoom: 5.2 };
 
-//make this be called from the api
-const algorithmOptions = [
-  { id: 'minmax', value: 'minmax', label: 'Minmax' },
-  { id: 'minsum', value: 'minsum', label: 'Minsum' },
-];
+const resolveAlgorithmOptions = (algorithms: string[]) => {
+  return algorithms.map((item) => {
+    var toLo = item.toLowerCase();
+    return {
+      id: toLo,
+      value: toLo,
+      label: toLo[0].toUpperCase() + toLo.slice(1).toLowerCase(),
+    };
+  });
+};
 
 enum HomePageMode {
   AREA_SELECTOR = 'AREA_SELECTOR',
@@ -22,4 +27,4 @@ const mapLegend = {
   ],
 };
 
-export { fullScreenBR, algorithmOptions, HomePageMode, mapLegend };
+export { fullScreenBR, resolveAlgorithmOptions, HomePageMode, mapLegend };

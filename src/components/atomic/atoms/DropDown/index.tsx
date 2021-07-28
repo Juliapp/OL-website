@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 export interface IDropDown {
   onDropDownChange: React.ChangeEventHandler<HTMLSelectElement>;
-  options: { id: string; value: string; label: string }[];
+  options?: { id: string; value: string; label: string }[];
   dropDownLabel?: string;
 }
 const DropDown: React.FC<IDropDown> = ({
@@ -18,16 +18,20 @@ const DropDown: React.FC<IDropDown> = ({
         onChange={onDropDownChange}
         className="forward dropdown"
       >
-        {options.map((item) => {
-          return (
-            <option id={item.id} value={item.value} key={item.id}>
-              {item.label}
-            </option>
-          );
-        })}
+        {options ? (
+          options.map((item) => {
+            return (
+              <option id={item.id} value={item.value} key={item.id}>
+                {item.label}
+              </option>
+            );
+          })
+        ) : (
+          <option>fetching data...</option>
+        )}
       </select>
     </div>
   );
 };
 
-export default DropDown;
+export default React.memo(DropDown);
