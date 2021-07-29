@@ -16,4 +16,26 @@ export async function getAreas() {
   return response.data;
 }
 
+interface Coordinates {
+  lat: number;
+  lng: number;
+}
+
+interface IRunResponse {
+  currentSolution: object;
+  KSolution: object[];
+}
+interface IRunParams {
+  location_id: string;
+  candidates: number[];
+  algorithm: string;
+  k: number;
+}
+
+export async function run(params: IRunParams) {
+  const response = await api.get<IRunResponse>('/run', { data: params });
+  return response.data;
+}
+
 export default api;
+export type { IRunParams };

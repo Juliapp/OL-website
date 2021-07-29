@@ -4,10 +4,20 @@ import './styles.css';
 export interface IBlockButton {
   styles?: React.CSSProperties;
   BButtonLabel?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
-const BlockButton: React.FC<IBlockButton> = ({ styles, BButtonLabel }) => {
+const BlockButton: React.FC<IBlockButton> = ({
+  styles,
+  BButtonLabel,
+  onClick,
+}) => {
   return (
-    <button style={styles} className="block-button forward">
+    <button
+      style={styles}
+      className="block-button forward"
+      type="submit"
+      onClick={onClick}
+    >
       {BButtonLabel && BButtonLabel}
     </button>
   );

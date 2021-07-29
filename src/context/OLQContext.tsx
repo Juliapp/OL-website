@@ -18,6 +18,8 @@ interface OLDContextType {
   selectedId: IArea | undefined;
   selectedAlgorithm: string | undefined;
   onSelectAlgorithm: (algorithm?: string | undefined) => void;
+  // onRun: api.IRunParams;
+  onRun: () => void;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
@@ -57,6 +59,19 @@ export const OLQProvider: React.FC = ({ children }) => {
     setSelectedAlgorithm(algorithm);
   }, []);
 
+  const onRun = useCallback(() => {
+    api
+      .run({
+        location_id: 'rj',
+        candidates: [-22.9666855, -43.6941723, -22.9581481, -43.684247],
+        algorithm: 'minmax',
+        k: 1,
+      })
+      .then((result) => {
+        console.log(result);
+      });
+  }, []);
+
   return (
     <OLDContext.Provider
       value={{
@@ -67,6 +82,7 @@ export const OLQProvider: React.FC = ({ children }) => {
         selectedId,
         selectedAlgorithm,
         onSelectAlgorithm,
+        onRun,
       }}
     >
       {children}
