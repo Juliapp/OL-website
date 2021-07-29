@@ -15,6 +15,7 @@ const DropDown: React.FC<IDropDown> = ({
       <h2>{dropDownLabel && dropDownLabel}</h2>
       <select
         name="select"
+        // onSta
         onChange={onDropDownChange}
         className="forward dropdown"
       >

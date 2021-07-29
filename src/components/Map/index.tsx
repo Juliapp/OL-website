@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Map } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import './styles.css';
-import { Legend } from '../atomic/atoms';
+import { Legend, SquaredButton } from '../atomic/atoms';
 import { WebOLForm, WebSelectArea } from '../atomic/templates';
 import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
 import { useAreas, useSelectId } from '../../hooks';
 import { MarkerArea } from '../atomic/molecules';
+import { home } from '../../assets';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
@@ -14,7 +15,7 @@ const MapLeaflet: React.FC = () => {
   const [legendItems, setLegendItems] = useState(mapLegend.AREA_SELECTOR);
   const areas = useAreas();
 
-  const { selectedArea } = useSelectId();
+  const { selectedArea, onSelectId } = useSelectId();
 
   useEffect(() => {
     if (selectedArea) {
@@ -24,7 +25,7 @@ const MapLeaflet: React.FC = () => {
   }, [selectedArea]);
 
   useEffect(() => {
-    setLegendItems(mapLegend[mode]);
+    setLegendItems((before) => mapLegend[mode]);
   }, [mode]);
 
   const flyToFullScreenBR = () => {
@@ -43,21 +44,30 @@ const MapLeaflet: React.FC = () => {
     >
       <div className="forward">
         {mode === HomePageMode.QUERY_FORM ? (
-          <WebOLForm
-            onDropDownChange={(event) => {}}
-            toggled={isOn}
-            setIsToggled={setisOn}
-          />
-        ) : (
           <div>
+            <SquaredButton
+              squaredIcon={home}
+              onClick={() => {
+                flyToFullScreenBR();
+                setMode(HomePageMode.AREA_SELECTOR);
+                onSelectId(undefined);
+              }}
+              styles={{ margin: '12px', position: 'absolute' }}
+            />
+            <WebOLForm toggled={isOn} setIsToggled={setisOn} />
+            <Legend legendItems={legendItems} key="QUERY_FORM" />
+          </div>
+        ) : (
+          <div className="areaSelector">
             <WebSelectArea />
             {areas?.map((area, index) => (
               <MarkerArea key={index} area={area} />
             ))}
+            <Legend legendItems={legendItems} key="AREA_SELECTOR" />
           </div>
         )}
 
-        <Legend legendItems={legendItems} />
+        {/* <Legend legendItems={legendItems} /> */}
       </div>
       <TileLayer
         // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

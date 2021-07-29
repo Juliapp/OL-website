@@ -9,26 +9,36 @@ interface IArea {
   lng: number;
 }
 interface OLDContextType {
-  algorithmSelector: { id: string; value: string; label: string }[] | undefined;
+  algorithmDropDownOptions:
+    | { id: string; value: string; label: string }[]
+    | undefined;
   areas: { key: string; lat: number; lng: number }[] | undefined;
   fetchInitialData: Promise<void>;
-  onSelectId: (area: IArea) => void;
+  onSelectId: (area: IArea | undefined) => void;
   selectedId: IArea | undefined;
+  selectedAlgorithm: string | undefined;
+  onSelectAlgorithm: (algorithm?: string | undefined) => void;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
 
 export const OLQProvider: React.FC = ({ children }) => {
-  const [algorithmSelector, setAlgorithmSelector] = useState<
+  const [algorithmDropDownOptions, setAlgorithmDropDownOptions] = useState<
     { id: string; value: string; label: string }[] | undefined
   >();
+
   const [areas, setAreas] =
     useState<{ key: string; lat: number; lng: number }[]>();
+
+  const [selectedAlgorithm, setSelectedAlgorithm] = useState<
+    string | undefined
+  >();
+
   const [selectedId, setSelectedId] = useState<undefined | IArea>();
   const fetchInitialData = useMemo(async () => {
     api.getAlgorithms().then((data) => {
       const resolved = resolveAlgorithmOptions(data);
-      setAlgorithmSelector(resolved);
+      setAlgorithmDropDownOptions(resolved);
     });
 
     api.getAreas().then((data) => {
@@ -37,20 +47,26 @@ export const OLQProvider: React.FC = ({ children }) => {
   }, []);
 
   const onSelectId = useCallback(
-    (area: { key: string; lat: number; lng: number }) => {
+    (area?: { key: string; lat: number; lng: number }) => {
       setSelectedId(area);
     },
     []
   );
 
+  const onSelectAlgorithm = useCallback((algorithm?: string) => {
+    setSelectedAlgorithm(algorithm);
+  }, []);
+
   return (
     <OLDContext.Provider
       value={{
         fetchInitialData,
-        algorithmSelector,
+        algorithmDropDownOptions,
         areas,
         onSelectId,
         selectedId,
+        selectedAlgorithm,
+        onSelectAlgorithm,
       }}
     >
       {children}
