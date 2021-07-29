@@ -2,15 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Map } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import './styles.css';
-import { AboutPanel, Legend } from '../atomic/atoms';
+import { Legend } from '../atomic/atoms';
 import { WebOLForm, WebSelectArea } from '../atomic/templates';
 import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
-import { useAlgorithmSelector } from '../../hooks';
+import { useAreas, useSelectId } from '../../hooks';
+import { MarkerArea } from '../atomic/molecules';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
   const [mode, setMode] = useState<HomePageMode>(HomePageMode.AREA_SELECTOR);
   const [legendItems, setLegendItems] = useState(mapLegend.AREA_SELECTOR);
+  const areas = useAreas();
+
+  const { selectedArea } = useSelectId();
+
+  useEffect(() => {
+    if (selectedArea) {
+      map?.flyTo({ lat: selectedArea?.lat, lng: selectedArea?.lng }, 10);
+      setMode(HomePageMode.QUERY_FORM);
+    }
+  }, [selectedArea]);
 
   useEffect(() => {
     setLegendItems(mapLegend[mode]);
@@ -20,7 +31,7 @@ const MapLeaflet: React.FC = () => {
     map?.flyTo(fullScreenBR.latlng, fullScreenBR.zoom);
   };
 
-  const [selectedAlgorithm, setSelectedAlgorithm] = useState();
+  // const [selectedAlgorithm, setSelectedAlgorithm] = useState();
   const [isOn, setisOn] = useState(false);
 
   return (
@@ -31,14 +42,19 @@ const MapLeaflet: React.FC = () => {
       whenCreated={setMap}
     >
       <div className="forward">
-        {mode === HomePageMode.AREA_SELECTOR ? (
+        {mode === HomePageMode.QUERY_FORM ? (
           <WebOLForm
             onDropDownChange={(event) => {}}
             toggled={isOn}
             setIsToggled={setisOn}
           />
         ) : (
-          <WebSelectArea />
+          <div>
+            <WebSelectArea />
+            {areas?.map((area, index) => (
+              <MarkerArea key={index} area={area} />
+            ))}
+          </div>
         )}
 
         <Legend legendItems={legendItems} />

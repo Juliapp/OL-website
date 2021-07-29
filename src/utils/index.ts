@@ -1,4 +1,4 @@
-import { information } from '../assets';
+import { information, iconArea } from '../assets';
 
 const fullScreenBR = { latlng: { lng: -55.0967, lat: -12.4347 }, zoom: 5.2 };
 
@@ -19,7 +19,7 @@ enum HomePageMode {
 }
 
 const mapLegend = {
-  AREA_SELECTOR: [{ icon: information, label: 'Polos da Loggi' }],
+  AREA_SELECTOR: [{ icon: iconArea, label: 'Polos da Loggi' }],
   QUERY_FORM: [
     { icon: information, label: 'teste' },
     { icon: information, label: 'teste' },
