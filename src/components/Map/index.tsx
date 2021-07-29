@@ -22,6 +22,7 @@ const MapLeaflet: React.FC = () => {
       map?.flyTo({ lat: selectedArea?.lat, lng: selectedArea?.lng }, 10);
       setMode(HomePageMode.QUERY_FORM);
     }
+    //eslint-disable-next-line
   }, [selectedArea]);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { createContext } from 'use-context-selector';
 import * as api from '../services/api';
 import { resolveAlgorithmOptions } from '../utils';
