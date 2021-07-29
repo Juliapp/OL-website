@@ -1,10 +1,10 @@
 import { useContextSelector } from 'use-context-selector';
 import { OLDContext } from '../context/OLQContext';
 
-export function useFechAlgorithms() {
+export function useFetchInitialData() {
   const fetch = useContextSelector(
     OLDContext,
-    (context) => context.fetchAlgorithms
+    (context) => context.fetchInitialData
   );
   return { fetch };
 }

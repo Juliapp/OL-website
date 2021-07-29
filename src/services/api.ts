@@ -9,4 +9,11 @@ export async function getAlgorithms() {
   return response.data;
 }
 
+export async function getAreas() {
+  const response = await api.get<{ key: string; lat: number; lng: number }[]>(
+    '/get-areas'
+  );
+  return response.data;
+}
+
 export default api;

@@ -1,4 +1,4 @@
 import { useAlgorithmSelector } from './useAlgorithmSelector';
-import { useFechAlgorithms } from './useFetchAlgorithms';
+import { useFetchInitialData } from './useFetchInitialData';
 
-export { useAlgorithmSelector, useFechAlgorithms };
+export { useAlgorithmSelector, useFetchInitialData };

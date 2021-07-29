@@ -1,16 +1,18 @@
 import React from 'react';
 import Map from './components/Map';
 import { OLQProvider } from './context/OLQContext';
-import { useFechAlgorithms } from './hooks';
+import { useFetchInitialData } from './hooks';
 // import MapComponent from './components/MapComponent';
 
 export default function App() {
-  const { fetch } = useFechAlgorithms();
+  const { fetch } = useFetchInitialData();
+
   React.useEffect(() => {
-    (async () => {
+    const init = async () => {
       await fetch;
-    })();
-  }, []);
+    };
+    init();
+  }, [fetch]);
 
   return (
     <OLQProvider>

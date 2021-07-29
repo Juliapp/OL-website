@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { createContext } from 'use-context-selector';
 import * as api from '../services/api';
 import { resolveAlgorithmOptions } from '../utils';
 
 interface OLDContextType {
   algorithmSelector: { id: string; value: string; label: string }[] | undefined;
-  fetchAlgorithms: Promise<void>;
+  areas: { key: string; lat: number; lng: number }[] | undefined;
+  fetchInitialData: Promise<void>;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
@@ -15,17 +16,22 @@ export const OLQProvider: React.FC = ({ children }) => {
     { id: string; value: string; label: string }[] | undefined
   >();
 
-  const fetchAlgorithms = useMemo(async () => {
-    console.log('useMemo foi');
-    await api.getAlgorithms().then((data) => {
+  const [areas, setAreas] =
+    useState<{ key: string; lat: number; lng: number }[]>();
+
+  const fetchInitialData = useMemo(async () => {
+    api.getAlgorithms().then((data) => {
       const resolved = resolveAlgorithmOptions(data);
-      console.log(resolved);
       setAlgorithmSelector(resolved);
+    });
+
+    api.getAreas().then((data) => {
+      setAreas(data);
     });
   }, []);
 
   return (
-    <OLDContext.Provider value={{ fetchAlgorithms, algorithmSelector }}>
+    <OLDContext.Provider value={{ fetchInitialData, algorithmSelector, areas }}>
       {children}
     </OLDContext.Provider>
   );
