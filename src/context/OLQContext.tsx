@@ -13,7 +13,12 @@ interface OLDContextType {
     | { id: string; value: string; label: string }[]
     | undefined;
   areas: { key: string; lat: number; lng: number }[] | undefined;
-  fetchInitialData: Promise<void>;
+
+  initializeData: (
+    responseAlgorithms: string[],
+    responseAreas: IArea[]
+  ) => void;
+
   onSelectId: (area: IArea | undefined) => void;
   selectedId: IArea | undefined;
   selectedAlgorithm: string | undefined;
@@ -37,16 +42,25 @@ export const OLQProvider: React.FC = ({ children }) => {
   >();
 
   const [selectedId, setSelectedId] = useState<undefined | IArea>();
-  const fetchInitialData = useMemo(async () => {
-    api.getAlgorithms().then((data) => {
-      const resolved = resolveAlgorithmOptions(data);
-      setAlgorithmDropDownOptions(resolved);
-    });
 
-    api.getAreas().then((data) => {
-      setAreas(data);
-    });
-  }, []);
+  const initializeData = useCallback(
+    (responseAlgorithms: string[], responseAreas: IArea[]) => {
+      // api.getAlgorithms().then((data) => {
+      //   const responseAlgorithms = resolveAlgorithmOptions(data);
+      //   setAlgorithmDropDownOptions(responseAlgorithms);
+      // });
+
+      // api.getAreas().then((data) => {
+      //   setAreas(data);
+      // });
+
+      const resolvedAlgorithms = resolveAlgorithmOptions(responseAlgorithms);
+      setAlgorithmDropDownOptions(resolvedAlgorithms);
+
+      setAreas(responseAreas);
+    },
+    []
+  );
 
   const onSelectId = useCallback(
     (area?: { key: string; lat: number; lng: number }) => {
@@ -75,7 +89,7 @@ export const OLQProvider: React.FC = ({ children }) => {
   return (
     <OLDContext.Provider
       value={{
-        fetchInitialData,
+        initializeData,
         algorithmDropDownOptions,
         areas,
         onSelectId,

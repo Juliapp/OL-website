@@ -2,11 +2,11 @@ import { useAlgorithmDropDownOpions } from './useAlgorithmDropDownOpions';
 import { useAreas } from './useAreas';
 import { useSelectId } from './useSelectId';
 import { useRun } from './useRun';
-import { useFetchInitialData } from './useFetchInitialData';
+import { useInitializeData } from './useInitializeData';
 
 export {
   useAlgorithmDropDownOpions,
-  useFetchInitialData,
+  useInitializeData,
   useAreas,
   useSelectId,
   useRun,

@@ -21,9 +21,21 @@ interface Coordinates {
   lng: number;
 }
 
-interface IRunResponse {
-  currentSolution: object;
-  KSolution: object[];
+interface IRunResponse200 {
+  currentSolution: {
+    result: number;
+    detail: object | undefined | null;
+  };
+  KSolution: {
+    attraction: number;
+    candidate: Coordinates;
+    result: number;
+    detail: object | undefined | null;
+  }[];
+}
+
+interface IRunResponse422 {
+  message: string;
 }
 interface IRunParams {
   location_id: string;
@@ -33,7 +45,9 @@ interface IRunParams {
 }
 
 export async function run(params: IRunParams) {
-  const response = await api.get<IRunResponse>('/run', { data: params });
+  const response = await api.get<IRunResponse200 | IRunResponse422>('/run', {
+    data: params,
+  });
   return response.data;
 }
 
