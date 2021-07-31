@@ -14,7 +14,7 @@ const BlockButton: React.FC<IBlockButton> = ({
   return (
     <button
       style={styles}
-      className="block-button forward"
+      className="block-button"
       type="submit"
       onClick={onClick}
     >

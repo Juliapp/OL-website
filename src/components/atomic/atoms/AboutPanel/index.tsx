@@ -7,7 +7,7 @@ export interface IAboutPanel {
 }
 const AboutPanel: React.FC<IAboutPanel> = ({ onClick }) => {
   return (
-    <div className="about-container">
+    <div className="about-container default-shadow">
       <div className="about-header">
         <h1>Sobre o projeto</h1>
         <img src={close} alt="" onClick={onClick} />

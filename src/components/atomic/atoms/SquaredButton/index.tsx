@@ -12,7 +12,11 @@ const SquaredButton: React.FC<ISquaredButton> = ({
   onClick,
 }) => {
   return (
-    <button style={styles} className="squared-button forward" onClick={onClick}>
+    <button
+      style={styles}
+      className="squared-button default-shadow"
+      onClick={onClick}
+    >
       {squaredIcon && (
         <img className="squared-icon" src={squaredIcon} alt="icon" />
       )}

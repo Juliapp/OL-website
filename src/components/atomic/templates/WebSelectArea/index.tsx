@@ -4,7 +4,7 @@ import './styles.css';
 const WebSelectArea: React.FC = () => {
   return (
     <WebAsideContainer>
-      <div className="select-area-message">
+      <div className="select-area-message default-shadow">
         <h2>Selecione um dos polos para começar</h2>
       </div>
     </WebAsideContainer>

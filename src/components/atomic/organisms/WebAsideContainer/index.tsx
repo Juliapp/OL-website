@@ -22,7 +22,7 @@ const WebAsideContainer: React.FC = ({ children }) => {
           styles={popupAbout ? { backgroundColor: '#ECECEC' } : {}}
         />
         <div className="panel-container">
-          <div className="banner">
+          <div className="banner default-shadow">
             <LoggiBanner />
           </div>
           {children}

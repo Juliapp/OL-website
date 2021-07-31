@@ -8,7 +8,7 @@ const Legend: React.FC<ILegend> = ({ legendItems }) => {
   useEffect(() => {}, [legendItems]);
 
   return (
-    <div className="legend-container">
+    <div className="legend-container default-shadow">
       <h2 className="legend-title">Legenda</h2>
       <div className="legend-items">
         {legendItems?.map((item, index) => {

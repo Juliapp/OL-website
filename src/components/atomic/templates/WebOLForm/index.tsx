@@ -8,7 +8,7 @@ const WebOLForm: React.FC<IWebOLForm> = ({ toggled, setIsToggled }) => {
   const { onSelectAlgorithm } = useSelectAlgorithm();
   return (
     <WebAsideContainer>
-      <div className="form-container">
+      <div className="form-container default-shadow">
         <QueryForm
           onDropDownChange={(event) => {
             onSelectAlgorithm(event.target.value);
