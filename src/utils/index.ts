@@ -18,6 +18,11 @@ enum HomePageMode {
   QUERY_FORM = 'QUERY_FORM',
 }
 
+enum FormMode {
+  FORM = 'FORM',
+  RESULTS = 'RESULTS',
+}
+
 const mapLegend = {
   AREA_SELECTOR: [{ icon: iconArea, label: 'Polos da Loggi' }],
   QUERY_FORM: [
@@ -27,4 +32,10 @@ const mapLegend = {
   ],
 };
 
-export { fullScreenBR, resolveAlgorithmOptions, HomePageMode, mapLegend };
+export {
+  fullScreenBR,
+  resolveAlgorithmOptions,
+  HomePageMode,
+  mapLegend,
+  FormMode,
+};

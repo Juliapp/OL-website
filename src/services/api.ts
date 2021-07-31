@@ -45,8 +45,8 @@ interface IRunParams {
 }
 
 export async function run(params: IRunParams) {
-  const response = await api.get<IRunResponse200 | IRunResponse422>('/run', {
-    data: params,
+  const response = await api.post<IRunResponse200 | IRunResponse422>('/run', {
+    params,
   });
   return response.data;
 }

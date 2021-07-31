@@ -1,0 +1,36 @@
+.result-item-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-end;
+
+  border-radius: 10px;
+  margin: 4px;
+  padding: 8px;
+  box-shadow: 0 1px 3px #00000020;
+}
+
+.result-enum {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.result-item-container img {
+  width: 25px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.result-number {
+  color: #ff8400;
+}
+.result-attraction {
+  color: #8fa7b2;
+}

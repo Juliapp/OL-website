@@ -45,19 +45,10 @@ export const OLQProvider: React.FC = ({ children }) => {
 
   const initializeData = useCallback(
     (responseAlgorithms: string[], responseAreas: IArea[]) => {
-      // api.getAlgorithms().then((data) => {
-      //   const responseAlgorithms = resolveAlgorithmOptions(data);
-      //   setAlgorithmDropDownOptions(responseAlgorithms);
-      // });
-
-      // api.getAreas().then((data) => {
-      //   setAreas(data);
-      // });
-
       const resolvedAlgorithms = resolveAlgorithmOptions(responseAlgorithms);
       setAlgorithmDropDownOptions(resolvedAlgorithms);
-
       setAreas(responseAreas);
+      setSelectedAlgorithm(responseAlgorithms[0]);
     },
     []
   );

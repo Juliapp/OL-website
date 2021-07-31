@@ -19,7 +19,7 @@ const MapLeaflet: React.FC = () => {
 
   useEffect(() => {
     if (selectedArea) {
-      map?.flyTo({ lat: selectedArea?.lat, lng: selectedArea?.lng }, 10);
+      map?.flyTo({ lat: selectedArea?.lat, lng: selectedArea?.lng }, 11);
       setMode(HomePageMode.QUERY_FORM);
     }
     //eslint-disable-next-line
@@ -33,7 +33,6 @@ const MapLeaflet: React.FC = () => {
     map?.flyTo(fullScreenBR.latlng, fullScreenBR.zoom);
   };
 
-  // const [selectedAlgorithm, setSelectedAlgorithm] = useState();
   const [isOn, setisOn] = useState(false);
 
   return (
@@ -56,7 +55,6 @@ const MapLeaflet: React.FC = () => {
               styles={{ margin: '12px', position: 'absolute' }}
             />
             <WebOLForm toggled={isOn} setIsToggled={setisOn} />
-            <Legend legendItems={legendItems} key="QUERY_FORM" />
           </div>
         ) : (
           <div className="areaSelector">
@@ -64,11 +62,10 @@ const MapLeaflet: React.FC = () => {
             {areas?.map((area, index) => (
               <MarkerArea key={index} area={area} />
             ))}
-            <Legend legendItems={legendItems} key="AREA_SELECTOR" />
           </div>
         )}
 
-        {/* <Legend legendItems={legendItems} /> */}
+        <Legend legendItems={legendItems} />
       </div>
       <TileLayer
         // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

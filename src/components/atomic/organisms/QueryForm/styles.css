@@ -4,3 +4,31 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.menu-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.menu-option {
+  border-bottom: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menu-option:hover {
+  background-color: #fafafa;
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 8px !important; */
+  max-height: 30vh;
+  overflow: auto;
+}
