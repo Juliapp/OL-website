@@ -8,6 +8,15 @@ interface IArea {
   lat: number;
   lng: number;
 }
+
+interface ICandidate {
+  lat: number;
+  lng: number;
+}
+interface IMapCandidates {
+  able: ICandidate[];
+  disable: ICandidate[];
+}
 interface OLDContextType {
   algorithmDropDownOptions:
     | { id: string; value: string; label: string }[]
@@ -25,6 +34,10 @@ interface OLDContextType {
   onSelectAlgorithm: (algorithm?: string | undefined) => void;
   // onRun: api.IRunParams;
   onRun: () => void;
+
+  candidates: IMapCandidates;
+  onNewCandidate: (candidate: ICandidate) => void;
+  onRemoveCandidate: (index: number) => void;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
@@ -42,6 +55,11 @@ export const OLQProvider: React.FC = ({ children }) => {
   >();
 
   const [selectedId, setSelectedId] = useState<undefined | IArea>();
+
+  const [candidates, setCandidates] = useState<IMapCandidates>({
+    able: [],
+    disable: [],
+  });
 
   const initializeData = useCallback(
     (responseAlgorithms: string[], responseAreas: IArea[]) => {
@@ -62,6 +80,30 @@ export const OLQProvider: React.FC = ({ children }) => {
 
   const onSelectAlgorithm = useCallback((algorithm?: string) => {
     setSelectedAlgorithm(algorithm);
+  }, []);
+
+  const onNewCandidate = useCallback((candidate: ICandidate) => {
+    setCandidates((state) => {
+      return {
+        able: [...state.able, candidate],
+        disable: [...state.disable],
+      };
+    });
+  }, []);
+
+  const onRemoveCandidate = useCallback((index: number) => {
+    setCandidates((state) => {
+      const removed = state.able[index];
+
+      return {
+        able: [
+          ...state.able.filter((value, i) => {
+            return i !== index;
+          }),
+        ],
+        disable: [...state.disable, removed],
+      };
+    });
   }, []);
 
   const onRun = useCallback(() => {
@@ -88,6 +130,9 @@ export const OLQProvider: React.FC = ({ children }) => {
         selectedAlgorithm,
         onSelectAlgorithm,
         onRun,
+        candidates,
+        onNewCandidate,
+        onRemoveCandidate,
       }}
     >
       {children}

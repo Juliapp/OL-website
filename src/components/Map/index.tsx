@@ -8,14 +8,16 @@ import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
 import { useAreas, useSelectId } from '../../hooks';
 import { MarkerArea } from '../atomic/molecules';
 import { home } from '../../assets';
+import MapEventControl from './MapEventControl';
+import DisablePropagation from './DisablaPropagation';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
   const [mode, setMode] = useState<HomePageMode>(HomePageMode.AREA_SELECTOR);
   const [legendItems, setLegendItems] = useState(mapLegend.AREA_SELECTOR);
-  const areas = useAreas();
-
+  const [isOn, setisOn] = useState(false);
   const { selectedArea, onSelectId } = useSelectId();
+  const areas = useAreas();
 
   useEffect(() => {
     if (selectedArea) {
@@ -27,13 +29,14 @@ const MapLeaflet: React.FC = () => {
 
   useEffect(() => {
     setLegendItems((before) => mapLegend[mode]);
+    if (mode === HomePageMode.AREA_SELECTOR) {
+      setisOn(false);
+    }
   }, [mode]);
 
   const flyToFullScreenBR = () => {
     map?.flyTo(fullScreenBR.latlng, fullScreenBR.zoom);
   };
-
-  const [isOn, setisOn] = useState(false);
 
   return (
     <MapContainer
@@ -42,31 +45,34 @@ const MapLeaflet: React.FC = () => {
       zoom={fullScreenBR.zoom}
       whenCreated={setMap}
     >
-      <div className="forward">
-        {mode === HomePageMode.QUERY_FORM ? (
-          <div>
-            <SquaredButton
-              squaredIcon={home}
-              onClick={() => {
-                flyToFullScreenBR();
-                setMode(HomePageMode.AREA_SELECTOR);
-                onSelectId(undefined);
-              }}
-              styles={{ margin: '12px', position: 'absolute' }}
-            />
-            <WebOLForm toggled={isOn} setIsToggled={setisOn} />
-          </div>
-        ) : (
-          <div className="areaSelector">
-            <WebSelectArea />
-            {areas?.map((area, index) => (
-              <MarkerArea key={index} area={area} />
-            ))}
-          </div>
-        )}
+      <DisablePropagation>
+        <MapEventControl editCandidates={isOn} />
+        <div className="forward">
+          {mode === HomePageMode.QUERY_FORM ? (
+            <div>
+              <SquaredButton
+                squaredIcon={home}
+                onClick={() => {
+                  flyToFullScreenBR();
+                  setMode(HomePageMode.AREA_SELECTOR);
+                  onSelectId(undefined);
+                }}
+                styles={{ margin: '12px', position: 'absolute' }}
+              />
+              <WebOLForm toggled={isOn} setIsToggled={setisOn} />
+            </div>
+          ) : (
+            <div className="areaSelector">
+              <WebSelectArea />
+              {areas?.map((area, index) => (
+                <MarkerArea key={index} area={area} />
+              ))}
+            </div>
+          )}
 
-        <Legend legendItems={legendItems} />
-      </div>
+          <Legend legendItems={legendItems} />
+        </div>
+      </DisablePropagation>
       <TileLayer
         // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         attribution={`&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>`}
