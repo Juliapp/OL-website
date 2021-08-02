@@ -90,5 +90,9 @@ const QueryForm: React.FC<IQueryForm> = ({
     </div>
   );
 };
+const Teste: React.FC<{ result: any }> = ({ result }) => {
+  console.log(result);
+  return <></>;
+};
 
 export default React.memo(QueryForm);
