@@ -14,6 +14,10 @@ export function useCandidates() {
     OLDContext,
     (state) => state.onRemoveCandidate
   );
+  const onResetCandidates = useContextSelector(
+    OLDContext,
+    (state) => state.onResetCandidates
+  );
 
-  return { candidates, onNewCandidate, onRemoveCandidate };
+  return { candidates, onNewCandidate, onRemoveCandidate, onResetCandidates };
 }

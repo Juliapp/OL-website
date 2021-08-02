@@ -4,9 +4,11 @@ import { useSelectId } from './useSelectId';
 import { useRun } from './useRun';
 import { useInitializeData } from './useInitializeData';
 import { useCandidates } from './useCandidates';
+import { useResult } from './useResult';
 
 export {
   useAlgorithmDropDownOpions,
+  useResult,
   useCandidates,
   useInitializeData,
   useAreas,

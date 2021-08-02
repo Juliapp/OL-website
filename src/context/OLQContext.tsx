@@ -1,7 +1,12 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { createContext } from 'use-context-selector';
 import * as api from '../services/api';
 import { resolveAlgorithmOptions } from '../utils';
+import {
+  ICandidate,
+  IServiceRunResponse200,
+  IServiceRunResponse422,
+} from '../utils/types';
 
 interface IArea {
   key: string;
@@ -9,10 +14,6 @@ interface IArea {
   lng: number;
 }
 
-interface ICandidate {
-  lat: number;
-  lng: number;
-}
 interface IMapCandidates {
   able: ICandidate[];
   disable: ICandidate[];
@@ -38,6 +39,8 @@ interface OLDContextType {
   candidates: IMapCandidates;
   onNewCandidate: (candidate: ICandidate) => void;
   onRemoveCandidate: (index: number) => void;
+  onResetCandidates: () => void;
+  runResult: IServiceRunResponse200 | undefined;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
@@ -60,6 +63,10 @@ export const OLQProvider: React.FC = ({ children }) => {
     able: [],
     disable: [],
   });
+
+  const [runResult, setRunResult] = useState<
+    IServiceRunResponse200 | undefined
+  >();
 
   const initializeData = useCallback(
     (responseAlgorithms: string[], responseAreas: IArea[]) => {
@@ -106,18 +113,25 @@ export const OLQProvider: React.FC = ({ children }) => {
     });
   }, []);
 
-  const onRun = useCallback(() => {
-    api
-      .run({
-        location_id: 'rj',
-        candidates: [-22.9666855, -43.6941723, -22.9581481, -43.684247],
-        algorithm: 'minmax',
-        k: 1,
-      })
-      .then((result) => {
-        console.log(result);
-      });
+  const onResetCandidates = useCallback(() => {
+    setCandidates({ able: [], disable: [] });
   }, []);
+
+  const onRun = useCallback(() => {
+    if (selectedAlgorithm && selectedId) {
+      api
+        .run({
+          // location_id: selectedId.key,
+          location_id: 'test',
+          candidates: candidates.able,
+          algorithm: selectedAlgorithm,
+          k: candidates.able.length,
+        })
+        .then((result) => {
+          setRunResult(result);
+        });
+    }
+  }, [candidates.able, selectedAlgorithm, selectedId]);
 
   return (
     <OLDContext.Provider
@@ -133,6 +147,8 @@ export const OLQProvider: React.FC = ({ children }) => {
         candidates,
         onNewCandidate,
         onRemoveCandidate,
+        onResetCandidates,
+        runResult,
       }}
     >
       {children}

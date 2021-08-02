@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import { useAlgorithmDropDownOpions, useRun } from '../../../../hooks';
+import React, { useEffect, useState } from 'react';
+import {
+  useAlgorithmDropDownOpions,
+  useResult,
+  useRun,
+} from '../../../../hooks';
 import { FormMode } from '../../../../utils';
+import { IServiceRunResponse200 } from '../../../../utils/types';
 import { BlockButton, DropDown, IDropDown, ResultItem } from '../../atoms';
 import { IToggleSec, ToggleSec } from '../../molecules';
 import './styles.css';
 
-// import { Container } from './styles';
 export interface IQueryForm extends IDropDown, IToggleSec {}
 const QueryForm: React.FC<IQueryForm> = ({
   toggled,
@@ -17,6 +21,12 @@ const QueryForm: React.FC<IQueryForm> = ({
   const active = { color: '#4E6068', borderColor: '#00BAFF' };
 
   const options = useAlgorithmDropDownOpions();
+
+  const result = useResult();
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
+
   return (
     <div className="query-form">
       <div className="menu-form">
@@ -63,24 +73,26 @@ const QueryForm: React.FC<IQueryForm> = ({
         </>
       ) : (
         <div className="results-container">
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
-          <ResultItem />
+          {result !== undefined
+            ? result.kSolution.map((item, index) => {
+                return (
+                  <ResultItem
+                    key={index}
+                    index={index + 1}
+                    result={item.result}
+                    attraction={item.attraction}
+                  />
+                );
+              })
+            : undefined}
         </div>
       )}
     </div>
   );
+};
+const Teste: React.FC<{ result: any }> = ({ result }) => {
+  console.log(result);
+  return <></>;
 };
 
 export default React.memo(QueryForm);

@@ -5,7 +5,7 @@ import './styles.css';
 import { Legend, SquaredButton } from '../atomic/atoms';
 import { WebOLForm, WebSelectArea } from '../atomic/templates';
 import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
-import { useAreas, useSelectId } from '../../hooks';
+import { useAreas, useCandidates, useSelectId } from '../../hooks';
 import { MarkerArea } from '../atomic/molecules';
 import { home } from '../../assets';
 import MapEventControl from './MapEventControl';
@@ -18,6 +18,7 @@ const MapLeaflet: React.FC = () => {
   const [isOn, setisOn] = useState(false);
   const { selectedArea, onSelectId } = useSelectId();
   const areas = useAreas();
+  const { onResetCandidates } = useCandidates();
 
   useEffect(() => {
     if (selectedArea) {
@@ -31,6 +32,7 @@ const MapLeaflet: React.FC = () => {
     setLegendItems((before) => mapLegend[mode]);
     if (mode === HomePageMode.AREA_SELECTOR) {
       setisOn(false);
+      onResetCandidates();
     }
   }, [mode]);
 
@@ -46,7 +48,7 @@ const MapLeaflet: React.FC = () => {
       whenCreated={setMap}
     >
       <DisablePropagation>
-        <MapEventControl editCandidates={isOn} />
+        <MapEventControl editCandidates={isOn} mode={mode} />
         <div className="forward">
           {mode === HomePageMode.QUERY_FORM ? (
             <div>
