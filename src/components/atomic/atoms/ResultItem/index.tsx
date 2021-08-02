@@ -3,22 +3,24 @@ import { iconArea } from '../../../../assets';
 import './styles.css';
 
 interface IResultItem {
-  tetst?: string;
+  index: number;
+  result: number;
+  attraction: number;
 }
 
-const ResultItem: React.FC<IResultItem> = () => {
+const ResultItem: React.FC<IResultItem> = ({ index, result, attraction }) => {
   return (
     <div className="result-item-container">
-      <div className="result-enum">1.</div>
+      <div className="result-enum">{index}.</div>
       <img src={iconArea} alt="" />
       <div className="result-grid">
         <div className="result-param">
           Resultado
-          <div className="result-number">31.2312,00</div>
+          <div className="result-number">{result}</div>
         </div>
         <div className="result-param">
           Atração
-          <div className="result-attraction">3.894</div>
+          <div className="result-attraction">{attraction}</div>
         </div>
       </div>
     </div>

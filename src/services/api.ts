@@ -1,4 +1,9 @@
 import axios from 'axios';
+import {
+  ICandidate,
+  IServiceRunResponse200,
+  IServiceRunResponse422,
+} from '../utils/types';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -15,37 +20,15 @@ export async function getAreas() {
   );
   return response.data;
 }
-
-interface Coordinates {
-  lat: number;
-  lng: number;
-}
-
-interface IRunResponse200 {
-  currentSolution: {
-    result: number;
-    detail: object | undefined | null;
-  };
-  KSolution: {
-    attraction: number;
-    candidate: Coordinates;
-    result: number;
-    detail: object | undefined | null;
-  }[];
-}
-
-interface IRunResponse422 {
-  message: string;
-}
 interface IRunParams {
   location_id: string;
-  candidates: number[];
+  candidates: ICandidate[];
   algorithm: string;
   k: number;
 }
 
 export async function run(params: IRunParams) {
-  const response = await api.post<IRunResponse200 | IRunResponse422>('/run', {
+  const response = await api.post<IServiceRunResponse200>('/run', {
     params,
   });
   return response.data;
