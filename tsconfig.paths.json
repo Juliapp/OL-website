@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "paths": {
-      "@assets": ["./assets/index.ts"],
-      "@atoms/*": ["./components/atomic/atoms"],
-      "@molecules/*": ["./components/atomic/molecules"],
-      "@organisms/*": ["./components/atomic/organisms"],
-      "@templates/*": ["./components/atomic/templates"],
-      "@context/*": ["./context"],
-      "@hooks/*": ["./hooks"],
-      "@services/*": ["./services"],
-      "@types/*": ["./utils/types"]
+      "@assets": ["./assets"],
+      "@atoms": ["./components/atomic/atoms"],
+      "@molecules": ["./components/atomic/molecules"],
+      "@organisms": ["./components/atomic/organisms"],
+      "@templates": ["./components/atomic/templates"],
+      "@context": ["./context"],
+      "@hooks": ["./hooks"],
+      "@services": ["./services"],
+      "@types": ["./utils/types"]
     }
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IToggleSwitch, ToggleSwitch } from '../../atoms';
+import { IToggleSwitch, ToggleSwitch } from '@atoms';
 import './styles.css';
 
 // import { Container } from './styles';

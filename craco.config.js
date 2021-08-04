@@ -17,20 +17,3 @@ module.exports = {
     },
   ],
 };
-
-// module.exports = {
-//   webpack: {
-//     alias: {
-//       // My custom aliases
-//       '@assets': path.resolve(__dirname, 'src/assets/*'),
-//       '@atoms': path.resolve(__dirname, 'src/components/atomic/atoms'),
-//       '@molecules': path.resolve(__dirname, 'src/components/atomic/molecules'),
-//       '@organisms': path.resolve(__dirname, 'src/components/atomic/organisms'),
-//       '@templates': path.resolve(__dirname, 'src/components/atomic/templates'),
-//       '@context': path.resolve(__dirname, 'src/context'),
-//       '@hooks': path.resolve(__dirname, 'src/hooks'),
-//       '@services': path.resolve(__dirname, 'src/services'),
-//       '@types': path.resolve(__dirname, 'src/utils/types'),
-//     },
-//   },
-// };

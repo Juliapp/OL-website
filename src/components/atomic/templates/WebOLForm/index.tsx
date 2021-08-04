@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelectAlgorithm } from '../../../../hooks/useSelectAlgorithm';
-import { IQueryForm, QueryForm, WebAsideContainer } from '../../organisms';
+import { useSelectAlgorithm } from '@hooks';
+import { IQueryForm, QueryForm, WebAsideContainer } from '@organisms';
 import './styles.css';
 
 export interface IWebOLForm extends Omit<IQueryForm, 'onDropDownChange'> {}

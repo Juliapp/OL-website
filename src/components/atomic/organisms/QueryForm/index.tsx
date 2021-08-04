@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {
-  useAlgorithmDropDownOpions,
-  useResult,
-  useRun,
-} from '../../../../hooks';
+import { useAlgorithmDropDownOpions, useResult, useRun } from '@hooks';
 import { FormMode } from '../../../../utils';
 import { IServiceRunResponse200 } from '../../../../utils/types';
-import { BlockButton, DropDown, IDropDown, ResultItem } from '../../atoms';
+import { BlockButton, DropDown, IDropDown, ResultItem } from '@atoms';
 import { IToggleSec, ToggleSec } from '../../molecules';
 import './styles.css';
 

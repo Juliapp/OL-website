@@ -1,5 +1,5 @@
 import React from 'react';
-import { WebAsideContainer } from '../../organisms';
+import { WebAsideContainer } from '@organisms';
 import './styles.css';
 const WebSelectArea: React.FC = () => {
   return (

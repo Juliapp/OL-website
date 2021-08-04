@@ -1,8 +1,8 @@
 import { icon } from 'leaflet';
 import React from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
-import { iconArea } from '../../../../assets';
-import { useSelectId } from '../../../../hooks';
+import { iconArea } from '@assets';
+import { useSelectId } from '@hooks';
 
 // import { Container } from './styles';
 

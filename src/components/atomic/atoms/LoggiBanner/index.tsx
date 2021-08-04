@@ -1,5 +1,5 @@
 import React from 'react';
-import { loggiLogo } from '../../../../assets';
+import { loggiLogo } from '@assets';
 import './styles.css';
 // import { Container } from './styles';
 

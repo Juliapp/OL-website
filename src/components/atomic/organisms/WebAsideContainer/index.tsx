@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
-import { information } from '../../../../assets';
-import { AboutPanel, LoggiBanner, SquaredButton } from '../../atoms';
+import { information } from '@assets';
+import { AboutPanel, LoggiBanner, SquaredButton } from '@atoms';
 import './styles.css';
 const WebAsideContainer: React.FC = ({ children }) => {
   const [popupAbout, setpopupAbout] = useState(false);
