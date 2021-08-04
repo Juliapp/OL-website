@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@atoms/*": ["./src/components/atomic/atoms"],
+      "@molecules/*": ["./src/components/atomic/molecules"],
+      "@organisms/*": ["./src/components/atomic/organisms"],
+      "@templates/*": ["./src/components/atomic/templates"],
+      "@context/*": ["./src/context/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@services/*": ["./src/services/*"],
+      "@types/*": ["./src/utils/types/*"]
+    }
+  }
+}
