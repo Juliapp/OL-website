@@ -1,5 +1,5 @@
 import React from 'react';
-import { close } from '../../../../assets';
+import { close } from '@assets';
 import './styles.css';
 
 export interface IAboutPanel {
