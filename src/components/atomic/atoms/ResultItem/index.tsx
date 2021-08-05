@@ -16,7 +16,7 @@ const ResultItem: React.FC<IResultItem> = ({ index, result, attraction }) => {
       <div className="result-grid">
         <div className="result-param">
           Resultado
-          <div className="result-number">{result}</div>
+          <div className="result-number">{result.toFixed(2)}</div>
         </div>
         <div className="result-param">
           Atração
