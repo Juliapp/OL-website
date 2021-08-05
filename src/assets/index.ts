@@ -4,4 +4,5 @@ import information from './information-outline.svg';
 import close from './close.svg';
 import home from './home.svg';
 import iconArea from './icon area.svg';
-export { loggiLogo, loggiSymbol, information, close, iconArea, home };
+import place from './place.svg';
+export { loggiLogo, loggiSymbol, information, close, iconArea, home, place };
