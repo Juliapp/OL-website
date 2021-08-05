@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Map } from 'leaflet';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import './styles.css';
-import { Legend, SquaredButton } from '../atomic/atoms';
-import { WebOLForm, WebSelectArea } from '../atomic/templates';
+import { Legend, SquaredButton } from '@atoms';
+import { WebOLForm, WebSelectArea } from '@templates';
 import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
-import { useAreas, useCandidates, useSelectId } from '../../hooks';
-import { MarkerArea } from '../atomic/molecules';
-import { home } from '../../assets';
+import { useAreas, useCandidates, useSelectId } from '@hooks';
+import { MarkerArea } from '@molecules';
+import { home } from '@assets';
 import MapEventControl from './MapEventControl';
 import DisablePropagation from './DisablaPropagation';
 

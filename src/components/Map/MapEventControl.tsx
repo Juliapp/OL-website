@@ -1,9 +1,8 @@
-import react from 'react';
+import React, { useCallback } from 'react';
 import { icon, LeafletMouseEventHandlerFn } from 'leaflet';
-import { useCallback } from 'react';
 import { Marker, useMapEvent } from 'react-leaflet';
-import { iconArea } from '../../assets';
-import { useCandidates, useResult } from '../../hooks';
+import { iconArea } from '@assets';
+import { useCandidates, useResult } from '@hooks';
 import { HomePageMode } from '../../utils';
 
 interface IMapEventControl {
@@ -22,7 +21,7 @@ const MapEventControl: React.FC<IMapEventControl> = ({
         onNewCandidate({ lat: e.latlng.lat, lng: e.latlng.lng });
       }
     },
-    [editCandidates]
+    [editCandidates, onNewCandidate]
   );
 
   const results = useResult();
