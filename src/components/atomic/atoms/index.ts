@@ -6,6 +6,7 @@ import ToggleSwitch, { IToggleSwitch } from './ToggleSwitch';
 import Legend from './Legend';
 import AboutPanel from './AboutPanel';
 import ResultItem from './ResultItem';
+import LoadingScreen from './LoadingScreen';
 
 export {
   DropDown,
@@ -16,5 +17,6 @@ export {
   Legend,
   AboutPanel,
   ResultItem,
+  LoadingScreen,
 };
 export type { IDropDown, IToggleSwitch, ISquaredButton, IBlockButton };

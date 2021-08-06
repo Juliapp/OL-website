@@ -25,4 +25,19 @@ interface IServiceRunResponse422 {
   message: string;
 }
 
-export type { ICandidate, IServiceRunResponse200, IServiceRunResponse422 };
+interface ILoadingScreen {
+  message?: string;
+}
+
+interface IMapCandidates {
+  able: ICandidate[];
+  disable: ICandidate[];
+}
+
+export type {
+  ICandidate,
+  IServiceRunResponse200,
+  IServiceRunResponse422,
+  ILoadingScreen,
+  IMapCandidates,
+};

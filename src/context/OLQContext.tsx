@@ -4,8 +4,9 @@ import * as api from '@api';
 import { resolveAlgorithmOptions } from '../utils';
 import {
   ICandidate,
+  ILoadingScreen,
+  IMapCandidates,
   IServiceRunResponse200,
-  IServiceRunResponse422,
 } from '../utils/types';
 
 interface IArea {
@@ -13,15 +14,11 @@ interface IArea {
   lat: number;
   lng: number;
 }
-
-interface IMapCandidates {
-  able: ICandidate[];
-  disable: ICandidate[];
-}
 interface OLDContextType {
   algorithmDropDownOptions:
     | { id: string; value: string; label: string }[]
     | undefined;
+
   areas: { key: string; lat: number; lng: number }[] | undefined;
 
   initializeData: (
@@ -31,16 +28,22 @@ interface OLDContextType {
 
   onSelectId: (area: IArea | undefined) => void;
   selectedId: IArea | undefined;
+
   selectedAlgorithm: string | undefined;
   onSelectAlgorithm: (algorithm?: string | undefined) => void;
-  // onRun: api.IRunParams;
+
   onRun: () => void;
 
   candidates: IMapCandidates;
   onNewCandidate: (candidate: ICandidate) => void;
   onRemoveCandidate: (index: number) => void;
   onResetCandidates: () => void;
+
   runResult: IServiceRunResponse200 | undefined;
+
+  loadingScreen: ILoadingScreen | undefined;
+
+  onChangeLoadingScreen: (loading?: ILoadingScreen | undefined) => void;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
@@ -68,8 +71,17 @@ export const OLQProvider: React.FC = ({ children }) => {
     IServiceRunResponse200 | undefined
   >();
 
+  const [loadingScreen, setLoadingScreen] = useState<
+    ILoadingScreen | undefined
+  >();
+
+  const onChangeLoadingScreen = useCallback((loading?: ILoadingScreen) => {
+    setLoadingScreen(loading);
+  }, []);
+
   const initializeData = useCallback(
     (responseAlgorithms: string[], responseAreas: IArea[]) => {
+      // onChangeLoadingScreen({ message: 'fetching data' });
       const resolvedAlgorithms = resolveAlgorithmOptions(responseAlgorithms);
       setAlgorithmDropDownOptions(resolvedAlgorithms);
       setAreas(responseAreas);
@@ -118,6 +130,7 @@ export const OLQProvider: React.FC = ({ children }) => {
   }, []);
 
   const onRun = useCallback(() => {
+    onChangeLoadingScreen({ message: 'Fetching data' });
     if (selectedAlgorithm && selectedId) {
       api
         .run({
@@ -129,9 +142,10 @@ export const OLQProvider: React.FC = ({ children }) => {
         })
         .then((result) => {
           setRunResult(result);
+          onChangeLoadingScreen();
         });
     }
-  }, [candidates.able, selectedAlgorithm, selectedId]);
+  }, [candidates.able, selectedAlgorithm, selectedId, onChangeLoadingScreen]);
 
   return (
     <OLDContext.Provider
@@ -149,6 +163,8 @@ export const OLQProvider: React.FC = ({ children }) => {
         onRemoveCandidate,
         onResetCandidates,
         runResult,
+        loadingScreen,
+        onChangeLoadingScreen,
       }}
     >
       {children}

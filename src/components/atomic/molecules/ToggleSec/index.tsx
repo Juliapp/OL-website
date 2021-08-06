@@ -15,7 +15,7 @@ const ToggleSec: React.FC<IToggleSec> = ({
   subtitle,
 }) => {
   return (
-    <div className={'forward toggle-sec-container'}>
+    <div className="toggle-sec-container">
       <div className="title-description">
         <h2 className="title">{title}</h2>
         <h3 className="subtitle">{subtitle}</h3>

@@ -35,7 +35,7 @@ const MapEventControl: React.FC<IMapEventControl> = ({
               <>
                 <Marker
                   position={item.candidate}
-                  key={index}
+                  key={-index}
                   icon={icon({
                     iconUrl: iconArea,
                     iconSize: [48, 48],

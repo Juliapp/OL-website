@@ -12,7 +12,7 @@ const ToggleSwitch: React.FC<IToggleSwitch> = ({
   setIsToggled,
 }) => {
   return (
-    <div className="forward switch-container">
+    <div className="switch-container">
       <input
         onChange={() => {
           setIsToggled?.(!toggled);

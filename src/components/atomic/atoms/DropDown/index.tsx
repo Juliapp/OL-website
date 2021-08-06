@@ -11,13 +11,13 @@ const DropDown: React.FC<IDropDown> = ({
   dropDownLabel,
 }) => {
   return (
-    <div className="dropContainer forward">
+    <div className="dropContainer ">
       <h2>{dropDownLabel && dropDownLabel}</h2>
       <select
         name="select"
         // onSta
         onChange={onDropDownChange}
-        className="forward dropdown"
+        className="dropdown"
       >
         {options ? (
           options.map((item) => {

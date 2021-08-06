@@ -5,7 +5,7 @@ import './styles.css';
 
 const LoggiBanner: React.FC = () => {
   return (
-    <div className="painel forward">
+    <div className="painel">
       <img src={loggiLogo} alt="" />
       <h2>Optimal Location Queries</h2>
     </div>
