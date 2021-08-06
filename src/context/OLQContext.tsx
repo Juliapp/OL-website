@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { createContext } from 'use-context-selector';
-import * as api from '../services/api';
+import * as api from '@api';
 import { resolveAlgorithmOptions } from '../utils';
 import {
   ICandidate,
