@@ -16,7 +16,7 @@ export async function getAlgorithms() {
 
 export async function getAreas() {
   const response = await api.get<{ key: string; lat: number; lng: number }[]>(
-    '/get-areas'
+    '/get-regions'
   );
   return response.data;
 }
