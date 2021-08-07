@@ -9,7 +9,7 @@ export default function App() {
   const { onChangeLoadingScreen } = useLoadingScreen();
 
   React.useEffect(() => {
-    onChangeLoadingScreen({ message: 'Initializing' });
+    onChangeLoadingScreen({ message: 'Fetching initial data...' });
     const init = async () => {
       const responseAlgorithms = await api.getAlgorithms();
       const responseAreas = await api.getAreas();
