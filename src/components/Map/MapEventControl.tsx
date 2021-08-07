@@ -1,9 +1,15 @@
 import React, { useCallback } from 'react';
-import { icon, LeafletMouseEventHandlerFn } from 'leaflet';
+import { divIcon, icon, LeafletMouseEventHandlerFn } from 'leaflet';
 import { Marker, Popup, useMapEvent } from 'react-leaflet';
+
+import ReactDOMServer from 'react-dom/server';
+
+// import EnhancedMarker from 'react-leaflet-enhanced-marker';
+
 import { place, iconArea } from '@assets';
 import { useCandidates, useResult } from '@hooks';
 import { HomePageMode } from '../../utils';
+import { CustomMarkerIcon } from '@atoms';
 
 interface IMapEventControl {
   mode: HomePageMode;
@@ -32,41 +38,50 @@ const MapEventControl: React.FC<IMapEventControl> = ({
       {mode === HomePageMode.QUERY_FORM && result
         ? result.kSolution.map((item, index) => {
             return (
-              <>
-                <Marker
-                  position={item.candidate}
-                  key={-index}
-                  icon={icon({
-                    iconUrl: iconArea,
-                    iconSize: [48, 48],
-                    popupAnchor: [0, -30],
-                    iconAnchor: [23, 40],
-                  })}
-                >
-                  <Popup>{index + 1}</Popup>
-                </Marker>
-              </>
+              <Marker
+                eventHandlers={{
+                  click: () => {
+                    onRemoveCandidate(index);
+                  },
+                }}
+                position={item.candidate}
+                key={`candidate-${index}`}
+                icon={divIcon({
+                  className: 'custom-icon',
+                  html: ReactDOMServer.renderToString(
+                    <CustomMarkerIcon
+                      key={`custom-marker-${index}`}
+                      closable={false}
+                      label={`${index + 1}`}
+                    />
+                  ),
+                  popupAnchor: [0, -45],
+                  iconSize: [48, 48],
+                  iconAnchor: [23, 50],
+                })}
+              ></Marker>
             );
           })
         : candidates.able.map((item, index) => {
             return (
-              <>
-                <Marker
-                  eventHandlers={{
-                    click: () => {
-                      onRemoveCandidate(index);
-                    },
-                  }}
-                  position={item}
-                  key={index}
-                  icon={icon({
-                    iconUrl: place,
-                    iconSize: [48, 48],
-                    popupAnchor: [48, 48],
-                    iconAnchor: [23, 40],
-                  })}
-                ></Marker>
-              </>
+              <Marker
+                eventHandlers={{
+                  click: () => {
+                    onRemoveCandidate(index);
+                  },
+                }}
+                position={item}
+                key={`marker-${index}`}
+                icon={divIcon({
+                  className: 'custom-icon',
+                  html: ReactDOMServer.renderToString(
+                    <CustomMarkerIcon key={`custom-marker-${index}`} />
+                  ),
+                  popupAnchor: [0, -45],
+                  iconSize: [48, 48],
+                  iconAnchor: [23, 50],
+                })}
+              ></Marker>
             );
           })}
     </>

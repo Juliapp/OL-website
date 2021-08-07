@@ -7,6 +7,7 @@ import Legend from './Legend';
 import AboutPanel from './AboutPanel';
 import ResultItem from './ResultItem';
 import LoadingScreen from './LoadingScreen';
+import CustomMarkerIcon from './CustomMarkerIcon';
 
 export {
   DropDown,
@@ -18,5 +19,6 @@ export {
   AboutPanel,
   ResultItem,
   LoadingScreen,
+  CustomMarkerIcon,
 };
 export type { IDropDown, IToggleSwitch, ISquaredButton, IBlockButton };
