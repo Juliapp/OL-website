@@ -10,7 +10,8 @@
       "@hooks": ["./hooks"],
       "@services": ["./services"],
       "@types": ["./utils/types"],
-      "@api": ["./services/api.ts"]
+      "@api": ["./services/api.ts"],
+      "@marker-clusters": ["./components/markerClusters"]
     }
   }
 }

@@ -10,6 +10,7 @@ import { MarkerArea } from '@molecules';
 import { home } from '@assets';
 import MapEventControl from './MapEventControl';
 import DisablePropagation from './DisablaPropagation';
+import { MAreas } from '@marker-clusters';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
@@ -78,9 +79,7 @@ const MapLeaflet: React.FC = () => {
         ) : (
           <div className="areaSelector">
             <WebSelectArea />
-            {areas?.map((area, index) => (
-              <MarkerArea key={index} area={area} />
-            ))}
+            <MAreas />
           </div>
         )}
 

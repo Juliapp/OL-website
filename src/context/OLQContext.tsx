@@ -168,10 +168,10 @@ export const OLQProvider: React.FC = ({ children }) => {
     api
       .getRegionData({
         location_id: 'test',
-        point_type: 'hubs',
+        point_type: 'deliveries',
       })
       .then((result) => {
-        setHubs(result);
+        setDeliveries(result);
       });
   }, []);
 

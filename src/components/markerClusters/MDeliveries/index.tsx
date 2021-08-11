@@ -1,11 +1,15 @@
 import { iconDelivery } from '@assets';
 import { useFetchLocationData } from '@hooks';
 import { icon } from 'leaflet';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
 
 const MDeliveries: React.FC = () => {
   const { deliveries } = useFetchLocationData();
+  useEffect(() => {
+    console.log(deliveries);
+  }, [deliveries]);
+
   return deliveries ? (
     <>
       {deliveries.map((hub, index) => (
@@ -14,8 +18,8 @@ const MDeliveries: React.FC = () => {
           position={[hub.lat, hub.lng]}
           icon={icon({
             iconUrl: iconDelivery,
-            iconSize: [5, 5],
-            popupAnchor: [5, 5],
+            iconSize: [15, 15],
+            popupAnchor: [20, 20],
           })}
         >
           <Tooltip>{`delivery`}</Tooltip>

@@ -10,8 +10,8 @@ import { place, iconArea } from '@assets';
 import { useCandidates, useResult } from '@hooks';
 import { HomePageMode } from '../../utils';
 import { CustomMarkerIcon } from '@atoms';
-import MDeliveries from 'components/markers/MDeliveries';
-import MHubs from 'components/markers/MHubs';
+import MDeliveries from 'components/markerClusters/MDeliveries';
+import MHubs from 'components/markerClusters/MHubs';
 
 interface IMapEventControl {
   mode: HomePageMode;
@@ -67,6 +67,7 @@ const MapEventControl: React.FC<IMapEventControl> = ({
       ) : (
         <>
           <MHubs />
+          <MDeliveries />
           {candidates.able.map((item, index) => {
             return (
               <Marker
