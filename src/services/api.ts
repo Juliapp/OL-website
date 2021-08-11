@@ -1,9 +1,9 @@
 import axios from 'axios';
-import {
-  ICandidate,
-  IServiceRunResponse200,
-  IServiceRunResponse422,
-} from '../utils/types';
+import zlib from 'zlib';
+
+// import
+
+import { ICandidate, IServiceRunResponse200 } from '../utils/types';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
@@ -32,6 +32,12 @@ export async function run(params: IRunParams) {
     params,
   });
   return response.data;
+}
+
+export async function getRegionData() {
+  api.get<string>('/get-region-data').then((response) => {
+    console.log(response);
+  });
 }
 
 export default api;
