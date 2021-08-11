@@ -86,7 +86,6 @@ const MapLeaflet: React.FC = () => {
         <Legend legendItems={legendItems} />
       </DisablePropagation>
       <TileLayer
-        // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         attribution={`&copy; <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>`}
         url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAP_BOX_ACCESS_TOKEN}`}
       />
