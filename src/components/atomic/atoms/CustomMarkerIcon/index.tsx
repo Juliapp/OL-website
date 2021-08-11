@@ -1,4 +1,3 @@
-import { DivIcon } from 'leaflet';
 import React from 'react';
 import { place, close } from '@assets';
 import './styles.css';

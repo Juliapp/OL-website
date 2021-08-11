@@ -1,12 +1,9 @@
 import React, { useCallback } from 'react';
-import { divIcon, icon, LeafletMouseEventHandlerFn } from 'leaflet';
-import { Marker, Popup, useMapEvent } from 'react-leaflet';
+import { divIcon, LeafletMouseEventHandlerFn } from 'leaflet';
+import { Marker, useMapEvent } from 'react-leaflet';
 
 import ReactDOMServer from 'react-dom/server';
 
-// import EnhancedMarker from 'react-leaflet-enhanced-marker';
-
-import { place, iconArea } from '@assets';
 import { useCandidates, useResult } from '@hooks';
 import { HomePageMode } from '../../utils';
 import { CustomMarkerIcon } from '@atoms';

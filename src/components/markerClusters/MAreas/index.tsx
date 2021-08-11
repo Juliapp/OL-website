@@ -1,4 +1,4 @@
-import { iconArea, iconDelivery } from '@assets';
+import { iconArea } from '@assets';
 import { useAreas, useFetchLocationData, useSelectId } from '@hooks';
 import { icon } from 'leaflet';
 import React, { useEffect } from 'react';
@@ -15,6 +15,7 @@ const MAreas: React.FC = () => {
     <>
       {areas.map((area, index) => (
         <Marker
+          key={index}
           eventHandlers={{
             click: () => {
               onSelectId(area);

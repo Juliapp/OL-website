@@ -6,9 +6,7 @@ import { Marker, Tooltip } from 'react-leaflet';
 
 const MDeliveries: React.FC = () => {
   const { deliveries } = useFetchLocationData();
-  useEffect(() => {
-    console.log(deliveries);
-  }, [deliveries]);
+  useEffect(() => {}, [deliveries]);
 
   return deliveries ? (
     <>

@@ -5,8 +5,7 @@ import './styles.css';
 import { Legend, LoadingScreen, SquaredButton } from '@atoms';
 import { WebOLForm, WebSelectArea } from '@templates';
 import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
-import { useAreas, useCandidates, useLoadingScreen, useSelectId } from '@hooks';
-import { MarkerArea } from '@molecules';
+import { useCandidates, useLoadingScreen, useSelectId } from '@hooks';
 import { home } from '@assets';
 import MapEventControl from './MapEventControl';
 import DisablePropagation from './DisablaPropagation';
@@ -18,7 +17,6 @@ const MapLeaflet: React.FC = () => {
   const [legendItems, setLegendItems] = useState(mapLegend.AREA_SELECTOR);
   const [isOn, setisOn] = useState(false);
   const { selectedArea, onSelectId } = useSelectId();
-  const areas = useAreas();
   const { onResetCandidates } = useCandidates();
 
   useEffect(() => {
@@ -35,7 +33,7 @@ const MapLeaflet: React.FC = () => {
       setisOn(false);
       onResetCandidates();
     }
-  }, [mode]);
+  }, [mode, onResetCandidates]);
 
   const flyToFullScreenBR = () => {
     map?.flyTo(fullScreenBR.latlng, fullScreenBR.zoom);
@@ -43,9 +41,7 @@ const MapLeaflet: React.FC = () => {
 
   const { loadingScreen } = useLoadingScreen();
 
-  useEffect(() => {
-    console.log(loadingScreen);
-  }, [loadingScreen]);
+  useEffect(() => {}, [loadingScreen]);
 
   return (
     <MapContainer
