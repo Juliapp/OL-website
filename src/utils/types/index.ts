@@ -34,10 +34,20 @@ interface IMapCandidates {
   disable: ICandidate[];
 }
 
+interface IPoint {
+  lat: number;
+  lng: number;
+}
+interface IArea extends IPoint {
+  key: string;
+}
+
 export type {
   ICandidate,
   IServiceRunResponse200,
   IServiceRunResponse422,
   ILoadingScreen,
   IMapCandidates,
+  IPoint,
+  IArea,
 };

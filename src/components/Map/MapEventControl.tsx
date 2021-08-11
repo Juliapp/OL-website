@@ -10,6 +10,8 @@ import { place, iconArea } from '@assets';
 import { useCandidates, useResult } from '@hooks';
 import { HomePageMode } from '../../utils';
 import { CustomMarkerIcon } from '@atoms';
+import MDeliveries from 'components/markers/MDeliveries';
+import MHubs from 'components/markers/MHubs';
 
 interface IMapEventControl {
   mode: HomePageMode;
@@ -35,34 +37,37 @@ const MapEventControl: React.FC<IMapEventControl> = ({
   useMapEvent('click', onClick);
   return (
     <>
-      {mode === HomePageMode.QUERY_FORM && result
-        ? result.kSolution.map((item, index) => {
-            return (
-              <Marker
-                eventHandlers={{
-                  click: () => {
-                    onRemoveCandidate(index);
-                  },
-                }}
-                position={item.candidate}
-                key={`candidate-${index}`}
-                icon={divIcon({
-                  className: 'custom-icon',
-                  html: ReactDOMServer.renderToString(
-                    <CustomMarkerIcon
-                      key={`custom-marker-${index}`}
-                      closable={false}
-                      label={`${index + 1}`}
-                    />
-                  ),
-                  popupAnchor: [0, -45],
-                  iconSize: [48, 48],
-                  iconAnchor: [23, 50],
-                })}
-              ></Marker>
-            );
-          })
-        : candidates.able.map((item, index) => {
+      {mode === HomePageMode.QUERY_FORM && result ? (
+        result.kSolution.map((item, index) => {
+          return (
+            <Marker
+              eventHandlers={{
+                click: () => {
+                  onRemoveCandidate(index);
+                },
+              }}
+              position={item.candidate}
+              key={`candidate-${index}`}
+              icon={divIcon({
+                className: 'custom-icon',
+                html: ReactDOMServer.renderToString(
+                  <CustomMarkerIcon
+                    key={`custom-marker-${index}`}
+                    closable={false}
+                    label={`${index + 1}`}
+                  />
+                ),
+                popupAnchor: [0, -45],
+                iconSize: [48, 48],
+                iconAnchor: [23, 50],
+              })}
+            ></Marker>
+          );
+        })
+      ) : (
+        <>
+          <MHubs />
+          {candidates.able.map((item, index) => {
             return (
               <Marker
                 eventHandlers={{
@@ -84,6 +89,8 @@ const MapEventControl: React.FC<IMapEventControl> = ({
               ></Marker>
             );
           })}
+        </>
+      )}
     </>
   );
 };

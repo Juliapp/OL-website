@@ -3,17 +3,14 @@ import { createContext } from 'use-context-selector';
 import * as api from '@api';
 import { resolveAlgorithmOptions } from '../utils';
 import {
+  IArea,
   ICandidate,
   ILoadingScreen,
   IMapCandidates,
+  IPoint,
   IServiceRunResponse200,
 } from '../utils/types';
 
-interface IArea {
-  key: string;
-  lat: number;
-  lng: number;
-}
 interface OLDContextType {
   algorithmDropDownOptions:
     | { id: string; value: string; label: string }[]
@@ -44,6 +41,11 @@ interface OLDContextType {
   loadingScreen: ILoadingScreen | undefined;
 
   onChangeLoadingScreen: (loading?: ILoadingScreen | undefined) => void;
+
+  hubs: IPoint[] | undefined;
+  onFetchHubs: () => void;
+  deliveries: IPoint[] | undefined;
+  onFetchDeliveries: () => void;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
@@ -75,12 +77,16 @@ export const OLQProvider: React.FC = ({ children }) => {
     ILoadingScreen | undefined
   >();
 
+  const [hubs, setHubs] = useState<IPoint[] | undefined>();
+  const [deliveries, setDeliveries] = useState<IPoint[] | undefined>();
+
   const onChangeLoadingScreen = useCallback((loading?: ILoadingScreen) => {
     setLoadingScreen(loading);
   }, []);
 
   const initializeData = useCallback(
     (responseAlgorithms: string[], responseAreas: IArea[]) => {
+      // api.getRegionData();
       // onChangeLoadingScreen({ message: 'fetching data' });
       const resolvedAlgorithms = resolveAlgorithmOptions(responseAlgorithms);
       setAlgorithmDropDownOptions(resolvedAlgorithms);
@@ -147,6 +153,28 @@ export const OLQProvider: React.FC = ({ children }) => {
     }
   }, [candidates.able, selectedAlgorithm, selectedId, onChangeLoadingScreen]);
 
+  const onFetchHubs = useCallback(() => {
+    api
+      .getRegionData({
+        location_id: 'test',
+        point_type: 'hubs',
+      })
+      .then((result) => {
+        setHubs(result);
+      });
+  }, []);
+
+  const onFetchDeliveries = useCallback(() => {
+    api
+      .getRegionData({
+        location_id: 'test',
+        point_type: 'hubs',
+      })
+      .then((result) => {
+        setHubs(result);
+      });
+  }, []);
+
   return (
     <OLDContext.Provider
       value={{
@@ -165,6 +193,10 @@ export const OLQProvider: React.FC = ({ children }) => {
         runResult,
         loadingScreen,
         onChangeLoadingScreen,
+        hubs,
+        onFetchHubs,
+        deliveries,
+        onFetchDeliveries,
       }}
     >
       {children}

@@ -7,6 +7,7 @@ import { useCandidates } from './useCandidates';
 import { useResult } from './useResult';
 import { useSelectAlgorithm } from './useSelectAlgorithm';
 import { useLoadingScreen } from './useLoadingScreen';
+import { useFetchLocationData } from './useFetchLocationData';
 
 export {
   useAlgorithmDropDownOpions,
@@ -18,4 +19,5 @@ export {
   useResult,
   useSelectAlgorithm,
   useLoadingScreen,
+  useFetchLocationData,
 };
