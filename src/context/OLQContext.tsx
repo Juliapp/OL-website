@@ -43,9 +43,9 @@ interface OLDContextType {
   onChangeLoadingScreen: (loading?: ILoadingScreen | undefined) => void;
 
   hubs: IPoint[] | undefined;
-  onFetchHubs: () => void;
+  onFetchHubs: (location_id: string) => void;
   deliveries: IPoint[] | undefined;
-  onFetchDeliveries: () => void;
+  onFetchDeliveries: (location_id: string) => void;
 }
 
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
@@ -153,10 +153,10 @@ export const OLQProvider: React.FC = ({ children }) => {
     }
   }, [candidates.able, selectedAlgorithm, selectedId, onChangeLoadingScreen]);
 
-  const onFetchHubs = useCallback(() => {
+  const onFetchHubs = useCallback((location_id: string) => {
     api
       .getRegionData({
-        location_id: 'test',
+        location_id,
         point_type: 'hubs',
       })
       .then((result) => {
@@ -164,10 +164,10 @@ export const OLQProvider: React.FC = ({ children }) => {
       });
   }, []);
 
-  const onFetchDeliveries = useCallback(() => {
+  const onFetchDeliveries = useCallback((location_id: string) => {
     api
       .getRegionData({
-        location_id: 'test',
+        location_id,
         point_type: 'deliveries',
       })
       .then((result) => {

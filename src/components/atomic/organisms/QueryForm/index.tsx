@@ -18,9 +18,7 @@ const QueryForm: React.FC<IQueryForm> = ({
   const options = useAlgorithmDropDownOpions();
 
   const result = useResult();
-  useEffect(() => {
-    console.log(result);
-  }, [result]);
+  useEffect(() => {}, [result]);
 
   return (
     <div className="query-form">

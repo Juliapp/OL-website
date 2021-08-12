@@ -19,8 +19,8 @@ const MAreas: React.FC = () => {
           eventHandlers={{
             click: () => {
               onSelectId(area);
-              onFetchDeliveries();
-              onFetchHubs();
+              onFetchDeliveries(area.key);
+              onFetchHubs(area.key);
             },
           }}
           position={[area.lat, area.lng]}

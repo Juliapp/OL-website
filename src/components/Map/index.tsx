@@ -49,6 +49,7 @@ const MapLeaflet: React.FC = () => {
       center={[fullScreenBR.latlng.lat, fullScreenBR.latlng.lng]}
       zoom={fullScreenBR.zoom}
       whenCreated={setMap}
+      preferCanvas={true}
     >
       {loadingScreen ? (
         <div className="loadingscreen-container">

@@ -1,5 +1,4 @@
-import MarkerArea from './MarkerArea';
 import ToggleSec, { IToggleSec } from './ToggleSec';
 
-export { ToggleSec, MarkerArea };
+export { ToggleSec };
 export type { IToggleSec };
