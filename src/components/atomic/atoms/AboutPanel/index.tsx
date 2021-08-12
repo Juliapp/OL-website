@@ -13,36 +13,38 @@ const AboutPanel: React.FC<IAboutPanel> = ({ onClick }) => {
         <img src={close} alt="" onClick={onClick} />
       </div>
       <div className="about-text">
-        <h3 className="about-text-title">Title</h3>
+        <h3 className="about-text-super-title">
+          Hub Point: local ideal para instalar um novo Hub
+        </h3>
+        <h3 className="about-text-title">Resumo</h3>
         <h3 className="about-text-content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate
-          obcaecati eos vitae fuga hic odio, ad illum natus sunt nam ipsam quia
-          qui tempora cumque, exercitationem iusto, reprehenderit aspernatur
-          molestiae consequuntur ipsum ea nesciunt ratione. Voluptatem sit harum
-          cum doloribus repudiandae voluptatibus mollitia. Dolore, incidunt
-          asperiores numquam doloribus, corrupti fugiat aut reprehenderit
-          dignissimos cumque doloremque velit quas, voluptate voluptatibus!
-          Impedit minus deserunt aliquid illum autem dolores eaque molestias
-          aperiam ea ex quam hic commodi neque, quibusdam esse nam.
-          Exercitationem consectetur aliquid dolorum. Minus fugiat odit nisi
-          voluptatibus id incidunt, excepturi laudantium rerum suscipit voluptas
-          expedita quo deserunt inventore minima perferendis dicta repellendus
-          quia temporibus a, iusto rem delectus. Nemo expedita, officiis eveniet
-          repellendus eius facilis distinctio. Nesciunt voluptas magnam porro.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate
-          obcaecati eos vitae fuga hic odio, ad illum natus sunt nam ipsam quia
-          qui tempora cumque, exercitationem iusto, reprehenderit aspernatur
-          molestiae consequuntur ipsum ea nesciunt ratione. Voluptatem sit harum
-          cum doloribus repudiandae voluptatibus mollitia. Dolore, incidunt
-          asperiores numquam doloribus, corrupti fugiat aut reprehenderit
-          dignissimos cumque doloremque velit quas, voluptate voluptatibus!
-          Impedit minus deserunt aliquid illum autem dolores eaque molestias
-          aperiam ea ex quam hic commodi neque, quibusdam esse nam.
-          Exercitationem consectetur aliquid dolorum. Minus fugiat odit nisi
-          voluptatibus id incidunt, excepturi laudantium rerum suscipit voluptas
-          expedita quo deserunt inventore minima perferendis dicta repellendus
-          quia temporibus a, iusto rem delectus. Nemo expedita, officiis eveniet
-          repellendus eius facilis distinctio. Nesciunt voluptas magnam porro.
+          A localização de um novo Hub (nodal point) tem impacto sobre os custos
+          e a qualidade das entregas, além de possibilitar aproveitar melhor as
+          características de um Transporte Multimodal. Ao adicionar um novo Hub
+          existem vários objetivos que podem ser perseguidos como: 1) balancear
+          o número de pacotes a serem entregues por cada Hub ou 2) balancear o
+          deslocamento total necessário por cada Hub para entregar os pacotes. O
+          objetivo deste projeto é investigar e implementar consultas que
+          permitam fornecer informações sobre a localização de um novo Hub,
+          dando suporte à tomada de decisão. Os algoritmos e testes
+          implementados para processar as consultas serão disponibilizados no
+          Loggi Bud.
+        </h3>
+
+        <h3 className="about-text-title">Financiador</h3>
+        <h3 className="about-text-content">Loggi (PBP-LOGGI)</h3>
+
+        <h3 className="about-text-title">Vigência do projeto</h3>
+        <h3 className="about-text-content">01/05/2021 a 31/01/2022</h3>
+
+        <h3 className="about-text-title">Bolsista</h3>
+        <h3 className="about-text-content">
+          Juliana Aragão Pinto | Contato: aragaopintojuli@gmail.com
+        </h3>
+
+        <h3 className="about-text-title">Orientador</h3>
+        <h3 className="about-text-content">
+          João B. Rocha-Junior | Contato: joao.rocha.jr@gmail.com
         </h3>
       </div>
     </div>

@@ -26,12 +26,24 @@
 }
 
 .about-text {
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 400px;
+  padding-right: 16px;
 }
 
 .about-text-title {
   font-size: 16px;
   font-weight: bold;
   margin: 8px 0 0 0;
+}
+
+.about-text-super-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 16px 0;
+}
+
+.about-text-content {
+  margin: 0 0 8px 0;
+  text-align: justify;
 }
