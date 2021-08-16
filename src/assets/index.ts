@@ -7,6 +7,7 @@ import iconArea from './icon area.svg';
 import iconDelivery from './icon delivery.svg';
 import place from './place.svg';
 import loggiHub from './loggi hub.svg';
+import iconCandidate from './icon candidate.svg';
 
 export {
   loggiLogo,
@@ -18,4 +19,5 @@ export {
   home,
   place,
   loggiHub,
+  iconCandidate,
 };

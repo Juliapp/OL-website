@@ -1,5 +1,5 @@
 import React from 'react';
-import { place, close } from '@assets';
+import { iconCandidate, close } from '@assets';
 import './styles.css';
 
 interface ICustomMarkerIcon {
@@ -11,7 +11,7 @@ interface ICustomMarkerIcon {
 }
 
 const CustomMarkerIcon: React.FC<ICustomMarkerIcon> = ({
-  icon = place,
+  icon = iconCandidate,
   noti = true,
   closable = true,
   label,

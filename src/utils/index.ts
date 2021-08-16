@@ -1,4 +1,4 @@
-import { information, iconArea } from '../assets';
+import { iconCandidate, iconDelivery, loggiHub, iconArea } from '@assets';
 
 const fullScreenBR = { latlng: { lng: -55.0967, lat: -12.4347 }, zoom: 5 };
 
@@ -26,9 +26,9 @@ enum FormMode {
 const mapLegend = {
   AREA_SELECTOR: [{ icon: iconArea, label: 'Polos da Loggi' }],
   QUERY_FORM: [
-    { icon: information, label: 'teste' },
-    { icon: information, label: 'teste' },
-    { icon: information, label: 'teste' },
+    { icon: loggiHub, label: 'Hubs atuais' },
+    { icon: iconDelivery, label: 'Deliveries' },
+    { icon: iconCandidate, label: 'Hubs Candidatos' },
   ],
 };
 
