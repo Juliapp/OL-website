@@ -19,7 +19,7 @@ const MAreas: React.FC = () => {
           eventHandlers={{
             click: () => {
               onSelectId(area);
-              // onFetchDeliveries(area.key);
+              onFetchDeliveries(area.key);
               onFetchHubs(area.key);
             },
           }}

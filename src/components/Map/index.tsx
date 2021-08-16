@@ -8,7 +8,7 @@ import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
 import { useCandidates, useLoadingScreen, useSelectId } from '@hooks';
 import { home } from '@assets';
 import DisablePropagation from './DisablaPropagation';
-import { MAreas, MCandidates, MHubs } from '@marker-clusters';
+import { MAreas, MCandidates, MDeliveries, MHubs } from '@marker-clusters';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
@@ -61,6 +61,7 @@ const MapLeaflet: React.FC = () => {
         {mode === HomePageMode.QUERY_FORM ? (
           <div>
             <MHubs />
+            <MDeliveries map={map} />
             <SquaredButton
               squaredIcon={home}
               onClick={() => {
