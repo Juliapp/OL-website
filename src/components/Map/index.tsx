@@ -9,7 +9,7 @@ import { useCandidates, useLoadingScreen, useSelectId } from '@hooks';
 import { home } from '@assets';
 import MapEventControl from './MapEventControl';
 import DisablePropagation from './DisablaPropagation';
-import { MAreas } from '@marker-clusters';
+import { MAreas, MHubs } from '@marker-clusters';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
@@ -61,6 +61,7 @@ const MapLeaflet: React.FC = () => {
 
         {mode === HomePageMode.QUERY_FORM ? (
           <div>
+            <MHubs />
             <SquaredButton
               squaredIcon={home}
               onClick={() => {
