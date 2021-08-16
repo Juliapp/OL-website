@@ -7,9 +7,8 @@ import { WebOLForm, WebSelectArea } from '@templates';
 import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
 import { useCandidates, useLoadingScreen, useSelectId } from '@hooks';
 import { home } from '@assets';
-import MapEventControl from './MapEventControl';
 import DisablePropagation from './DisablaPropagation';
-import { MAreas, MHubs } from '@marker-clusters';
+import { MAreas, MCandidates, MHubs } from '@marker-clusters';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
@@ -57,7 +56,7 @@ const MapLeaflet: React.FC = () => {
       ) : undefined}
 
       <DisablePropagation>
-        <MapEventControl editCandidates={isOn} mode={mode} />
+        <MCandidates editCandidates={isOn} mode={mode} />
 
         {mode === HomePageMode.QUERY_FORM ? (
           <div>

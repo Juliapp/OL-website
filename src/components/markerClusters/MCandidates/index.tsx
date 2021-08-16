@@ -5,7 +5,7 @@ import { Marker, useMapEvent } from 'react-leaflet';
 import ReactDOMServer from 'react-dom/server';
 
 import { useCandidates, useResult } from '@hooks';
-import { HomePageMode } from '../../utils';
+import { HomePageMode } from '../../../utils';
 import { CustomMarkerIcon } from '@atoms';
 
 interface IMapEventControl {
