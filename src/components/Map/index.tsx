@@ -61,7 +61,7 @@ const MapLeaflet: React.FC = () => {
         {mode === HomePageMode.QUERY_FORM ? (
           <div>
             <MHubs />
-            <MDeliveries map={map} />
+            <MDeliveries />
             <SquaredButton
               squaredIcon={home}
               onClick={() => {

@@ -167,7 +167,7 @@ export const OLQProvider: React.FC = ({ children }) => {
   const onFetchDeliveries = useCallback((location_id: string) => {
     api
       .getRegionData({
-        location_id,
+        location_id: 'test',
         point_type: 'deliveries',
       })
       .then((result) => {

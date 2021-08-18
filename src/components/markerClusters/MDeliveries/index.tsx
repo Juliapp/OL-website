@@ -1,43 +1,31 @@
 import { iconDelivery } from '@assets';
 import { useFetchLocationData } from '@hooks';
-import L, { icon, Map } from 'leaflet';
+import { icon } from 'leaflet';
 import React, { useEffect } from 'react';
-// import { Marker, Tooltip } from 'react-leaflet';
-interface IMDeliveries {
-  map?: Map;
-}
-const MDeliveries: React.FC<IMDeliveries> = ({ map }) => {
+import { Marker } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster';
+const MDeliveries: React.FC = () => {
   const { deliveries } = useFetchLocationData();
-  useEffect(() => {
-    if (map && deliveries) {
-      for (const delivery of deliveries) {
-        L.circleMarker(delivery, { radius: 5, color: '#3388ff' }).addTo(map);
-      }
-    }
-  }, [deliveries, map]);
+  useEffect(() => {}, [deliveries]);
 
-  return <></>;
+  return (
+    <>
+      {deliveries && (
+        <MarkerClusterGroup>
+          {deliveries.map((address, index) => (
+            <Marker
+              key={index}
+              position={address}
+              icon={icon({
+                iconUrl: iconDelivery,
+                iconSize: [30, 30],
+              })}
+            />
+          ))}
+        </MarkerClusterGroup>
+      )}
+    </>
+  );
 };
-
-//   return deliveries ? (
-//     <>
-//       {deliveries.map((hub, index) => (
-//         <Marker
-//           key={index}
-//           position={[hub.lat, hub.lng]}
-//           icon={icon({
-//             iconUrl: iconDelivery,
-//             iconSize: [15, 15],
-//             popupAnchor: [20, 20],
-//           })}
-//         >
-//           <Tooltip>{`delivery`}</Tooltip>
-//         </Marker>
-//       ))}
-//     </>
-//   ) : (
-//     <></>
-//   );
-// };
 
 export default MDeliveries;
