@@ -34,6 +34,7 @@ export async function run(params: IRunParams) {
 interface IRegionDataParams {
   location_id: string;
   point_type: string;
+  percentage?: number;
 }
 
 export async function getRegionData(params: IRegionDataParams) {
