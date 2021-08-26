@@ -169,7 +169,7 @@ export const OLQProvider: React.FC = ({ children }) => {
       .getRegionData({
         location_id,
         point_type: 'deliveries',
-        percentage: 0.1,
+        percentage: 0.05,
       })
       .then((result) => {
         setDeliveries(result);
