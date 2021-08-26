@@ -26,7 +26,7 @@ const MapLeaflet: React.FC = () => {
     //eslint-disable-next-line
   }, [selectedArea]);
   useEffect(() => {
-    setLegendItems((before) => mapLegend[mode]);
+    setLegendItems(mapLegend[mode]);
     if (mode === HomePageMode.AREA_SELECTOR) {
       setisOn(false);
       onResetCandidates();

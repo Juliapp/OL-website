@@ -28,4 +28,4 @@ const MDeliveries: React.FC = () => {
   );
 };
 
-export default MDeliveries;
+export default React.memo(MDeliveries);
