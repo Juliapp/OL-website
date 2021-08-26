@@ -12,7 +12,6 @@ const ResultItem: React.FC<IResultItem> = ({ index, result, attraction }) => {
   return (
     <div className="result-item-container">
       <div className="result-enum">{index}.</div>
-      <img src={iconArea} alt="" />
       <div className="result-grid">
         <div className="result-param">
           Resultado
