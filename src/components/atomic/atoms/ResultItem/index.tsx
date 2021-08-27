@@ -15,7 +15,9 @@ const ResultItem: React.FC<IResultItem> = ({ index, result, attraction }) => {
       <div className="result-grid">
         <div className="result-param">
           Resultado
-          <div className="result-number">{result.toFixed(2)}</div>
+          <div className="result-number">
+            {result.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+          </div>
         </div>
         <div className="result-param">
           Atração
