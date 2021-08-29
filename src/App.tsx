@@ -1,3 +1,4 @@
+import { dispatchType } from 'context/ExecutionQueryContext';
 import React from 'react';
 import Map from './components/Map';
 import { useExecutionQuery, useInitializeData } from './hooks';
@@ -7,19 +8,28 @@ import * as api from './services/api';
 export default function App() {
   const { fetch } = useInitializeData();
   // const { onChangeLoadingScreen } = useLoadingScreen();
-  const { create, del } = useExecutionQuery();
+  const { executionQueryDispatch } = useExecutionQuery();
 
   React.useEffect(() => {
     const id = 'dataInitializer';
-    create({ id, label: 'Fetching initial data...' });
+
+    executionQueryDispatch({
+      type: dispatchType.CREATE,
+      param: { id, label: 'Fetching initial data...' },
+    });
+
     const init = async () => {
       const responseAlgorithms = await api.getAlgorithms();
       const responseAreas = await api.getAreas();
       fetch(responseAlgorithms, responseAreas);
-      del(id);
+
+      executionQueryDispatch({
+        type: dispatchType.DELETE,
+        param: { id },
+      });
     };
     init();
-  }, [fetch]);
+  }, [executionQueryDispatch, fetch]);
 
   return <Map />;
 }

@@ -5,7 +5,7 @@ import './styles.css';
 import { Legend, LoadingScreen, SquaredButton } from '@atoms';
 import { WebOLForm, WebSelectArea } from '@templates';
 import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
-import { useCandidates, useLoadingScreen, useSelectId } from '@hooks';
+import { useCandidates, useExecutionQuery, useSelectId } from '@hooks';
 import { home } from '@assets';
 import DisablePropagation from './DisablaPropagation';
 import { MAreas, MCandidates, MDeliveries, MHubs } from '@marker-clusters';
@@ -37,9 +37,11 @@ const MapLeaflet: React.FC = () => {
     map?.flyTo(fullScreenBR.latlng, fullScreenBR.zoom);
   };
 
-  const { loadingScreen } = useLoadingScreen();
+  const { isEmpty: executionIsEmpty, current } = useExecutionQuery();
 
-  useEffect(() => {}, [loadingScreen]);
+  useEffect(() => {
+    console.log(current);
+  }, [current]);
 
   return (
     <MapContainer
@@ -49,7 +51,7 @@ const MapLeaflet: React.FC = () => {
       whenCreated={setMap}
       preferCanvas={true}
     >
-      {loadingScreen ? (
+      {!executionIsEmpty ? (
         <div className="loadingscreen-container">
           <LoadingScreen />
         </div>

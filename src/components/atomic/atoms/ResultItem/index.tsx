@@ -1,5 +1,4 @@
 import React from 'react';
-import { iconArea } from '@assets';
 import './styles.css';
 
 interface IResultItem {

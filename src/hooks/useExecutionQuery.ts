@@ -1,13 +1,21 @@
+import { ExecutionQueryContext } from 'context/ExecutionQueryContext';
 import { useContextSelector } from 'use-context-selector';
-import { OLDContext } from '../context/OLQContext';
 
 export function useExecutionQuery() {
-  const executionQuery = useContextSelector(
-    OLDContext,
-    (state) => state.executionQuery
+  const isEmpty = useContextSelector(
+    ExecutionQueryContext,
+    (state) => state.state.isEmpty
   );
 
-  // const {query, isEmpty, create, update, del} = executionQuery;
+  const current = useContextSelector(
+    ExecutionQueryContext,
+    (state) => state.state.query[0]
+  );
 
-  return { ...executionQuery };
+  const executionQueryDispatch = useContextSelector(
+    ExecutionQueryContext,
+    (state) => state.dispatch
+  );
+
+  return { isEmpty, current, executionQueryDispatch };
 }
