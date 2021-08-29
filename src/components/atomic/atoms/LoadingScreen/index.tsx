@@ -1,15 +1,14 @@
-import { useLoadingScreen } from '@hooks';
 import React from 'react';
 import './styles.css';
+import { useExecutionQuery } from '@hooks';
 const LoadingScreen: React.FC = () => {
-  const { loadingScreen } = useLoadingScreen();
-
+  const { query } = useExecutionQuery();
   return (
     <div className="loadingscreen">
       <div className="loader"></div>
-      <div className="loadingscreen-message">{loadingScreen?.message}</div>
+      <div className="loadingscreen-message">{query[0].label}</div>
     </div>
   );
 };
 
-export default LoadingScreen;
+export default React.memo(LoadingScreen);

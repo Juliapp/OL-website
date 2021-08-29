@@ -25,10 +25,6 @@ interface IServiceRunResponse422 {
   message: string;
 }
 
-interface ILoadingScreen {
-  message?: string;
-}
-
 interface IMapCandidates {
   able: ICandidate[];
   disable: ICandidate[];
@@ -46,7 +42,6 @@ export type {
   ICandidate,
   IServiceRunResponse200,
   IServiceRunResponse422,
-  ILoadingScreen,
   IMapCandidates,
   IPoint,
   IArea,
