@@ -9,7 +9,6 @@ import {
   IPoint,
   IServiceRunResponse200,
 } from '../utils/types';
-import { ExecutionQuery } from 'utils/helpers';
 
 interface OLDContextType {
   algorithmDropDownOptions:
@@ -36,8 +35,6 @@ interface OLDContextType {
   onNewCandidate: (candidate: ICandidate) => void;
   onRemoveCandidate: (index: number) => void;
   onResetCandidates: () => void;
-
-  executionQuery: typeof ExecutionQuery;
 
   hubs: IPoint[] | undefined;
   onFetchHubs: (location_id: string) => void;
@@ -72,8 +69,6 @@ export const OLQProvider: React.FC = ({ children }) => {
 
   const [hubs, setHubs] = useState<IPoint[] | undefined>();
   const [deliveries, setDeliveries] = useState<IPoint[] | undefined>();
-
-  const executionQuery = ExecutionQuery();
 
   const initializeData = useCallback(
     (responseAlgorithms: string[], responseAreas: IArea[]) => {
@@ -183,7 +178,6 @@ export const OLQProvider: React.FC = ({ children }) => {
         onRemoveCandidate,
         onResetCandidates,
         runResult,
-        executionQuery,
         hubs,
         onFetchHubs,
         deliveries,

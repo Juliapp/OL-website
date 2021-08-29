@@ -1,4 +1,6 @@
 import React from 'react';
+import { createContext } from 'use-context-selector';
+// import { Container } from './styles';
 
 interface IExecutionQueryItem {
   id: string;
@@ -6,7 +8,17 @@ interface IExecutionQueryItem {
   label?: string;
 }
 
-const ExecutionQuery = () => {
+interface ExecutionQueryContextType {
+  query: IExecutionQueryItem[];
+  isEmpty: boolean;
+
+  create: (item: IExecutionQueryItem) => void;
+}
+
+export const ExecutionQueryContext = createContext<ExecutionQueryContextType>(
+  {} as ExecutionQueryContextType
+);
+export const ExecutionQueryContextProvider: React.FC = ({ children }) => {
   const [query, setQuery] = React.useState<IExecutionQueryItem[]>([]);
   const [isEmpty, setIsEmpty] = React.useState<boolean>(true);
 
@@ -18,17 +30,20 @@ const ExecutionQuery = () => {
     return query.findIndex((qitem) => qitem.id === id);
   }
 
-  function create(item: IExecutionQueryItem) {
-    const index = _findIndex(item);
-    if (index === -1) {
-      // this.query.push(item);
-      // this.isEmpty = false;
-      setQuery((previousQuery) => previousQuery.concat(item));
-      if (isEmpty) {
-        setIsEmpty(false);
+  const create = React.useCallback(
+    (item: IExecutionQueryItem) => {
+      const index = _findIndex(item);
+      if (index === -1) {
+        // this.query.push(item);
+        // this.isEmpty = false;
+        setQuery((previousQuery) => previousQuery.concat(item));
+        if (isEmpty) {
+          setIsEmpty(false);
+        }
       }
-    }
-  }
+    },
+    [_findIndex, isEmpty]
+  );
 
   function update(item: IExecutionQueryItem) {
     const index = _findIndex(item);
@@ -54,7 +69,10 @@ const ExecutionQuery = () => {
       }
     }
   }
-  return { query, isEmpty, create, update, del };
-};
 
-export default ExecutionQuery;
+  return (
+    <ExecutionQueryContext.Provider value={{ query, isEmpty, create }}>
+      {children}
+    </ExecutionQueryContext.Provider>
+  );
+};
