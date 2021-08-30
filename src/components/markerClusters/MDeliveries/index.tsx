@@ -4,6 +4,7 @@ import { icon } from 'leaflet';
 import React, { useEffect } from 'react';
 import { Marker } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import './styles.css';
 const MDeliveries: React.FC = () => {
   const { deliveries } = useFetchLocationData();
   useEffect(() => {}, [deliveries]);
