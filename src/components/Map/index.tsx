@@ -39,9 +39,6 @@ const MapLeaflet: React.FC = () => {
   };
 
   const { isEmpty: executionIsEmpty } = useExecutionQuery();
-  useEffect(() => {
-    console.log(executionIsEmpty);
-  }, [executionIsEmpty]);
 
   return (
     <MapContainer

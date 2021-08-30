@@ -39,4 +39,4 @@ const CustomMarkerIcon: React.FC<ICustomMarkerIcon> = ({
   );
 };
 
-export default CustomMarkerIcon;
+export default React.memo(CustomMarkerIcon);

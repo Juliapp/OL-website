@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.css';
 import { useExecutionQuery } from '@hooks';
 const LoadingScreen: React.FC = () => {
   const { current } = useExecutionQuery();
+  useEffect(() => {}, [current]);
+
   return (
     <div className="loadingscreen">
       <div className="loader"></div>
@@ -11,4 +13,4 @@ const LoadingScreen: React.FC = () => {
   );
 };
 
-export default React.memo(LoadingScreen);
+export default LoadingScreen;

@@ -51,4 +51,4 @@ const AboutPanel: React.FC<IAboutPanel> = ({ onClick }) => {
   );
 };
 
-export default AboutPanel;
+export default React.memo(AboutPanel);

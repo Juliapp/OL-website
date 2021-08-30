@@ -126,11 +126,14 @@ export const OLQProvider: React.FC = ({ children }) => {
   }, []);
 
   const onRun = useCallback(() => {
-    // onChangeLoadingScreen({ message: 'Fetching data' });
     if (selectedAlgorithm && selectedId) {
+      const id = 'onRun';
+      executionQueryDispatch({
+        type: dispatchType.CREATE,
+        param: { id, label: 'Calculating...' },
+      });
       api
         .run({
-          // location_id: selectedId.key,
           location_id: 'test',
           candidates: candidates.able,
           algorithm: selectedAlgorithm,
@@ -138,10 +141,12 @@ export const OLQProvider: React.FC = ({ children }) => {
         })
         .then((result) => {
           setRunResult(result);
-          // onChangeLoadingScreen();
+        })
+        .finally(() => {
+          executionQueryDispatch({ type: dispatchType.DELETE, param: { id } });
         });
     }
-  }, [candidates.able, selectedAlgorithm, selectedId]);
+  }, [candidates.able, executionQueryDispatch, selectedAlgorithm, selectedId]);
 
   const onFetchHubs = useCallback(
     (location_id: string) => {
@@ -171,7 +176,7 @@ export const OLQProvider: React.FC = ({ children }) => {
       const id = 'onFetchDeliveries';
       executionQueryDispatch({
         type: dispatchType.CREATE,
-        param: { id, label: 'Fetching Deliveries' },
+        param: { id, label: 'Fetching Deliveries...' },
       });
       api
         .getRegionData({

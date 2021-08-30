@@ -1,4 +1,4 @@
-import React, { useReducer, Reducer, useEffect } from 'react';
+import React, { useReducer, Reducer } from 'react';
 import { createContext } from 'use-context-selector';
 
 interface QuerySchema {
@@ -42,28 +42,26 @@ const executionQueryReducer = (
 
   switch (type) {
     case 'CREATE':
-      console.log('creating new task');
       if (index === -1) {
         state.query.push(param);
         if (state.isEmpty) {
           state.isEmpty = false;
         }
       }
-      return state;
+      return { ...state };
     case 'UPDATE':
       if (index >= 0) {
         state.query[index] = param;
       }
-      return state;
+      return { ...state };
     case 'DELETE':
-      console.log('deleting task');
       if (index >= 0) {
         state.query.splice(index, 1);
         state.isEmpty = state.query.length === 0;
       }
-      return state;
+      return { ...state };
     default:
-      return state;
+      return { ...state };
   }
 };
 
@@ -76,10 +74,6 @@ export const ExecutionQueryContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer<
     Reducer<IExecutionQuerySchema, IExecutionQueryAction>
   >(executionQueryReducer, initialState);
-
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
 
   return (
     <ExecutionQueryContext.Provider value={{ state, dispatch }}>
