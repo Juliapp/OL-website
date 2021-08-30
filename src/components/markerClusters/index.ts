@@ -4,6 +4,7 @@ import MRegions from './MRegions';
 import MCandidates from './MCandidates';
 import MCandidatesAble from './MCandidatesAble';
 import MSolutions from './MSolutions';
+import MDetail from './MDetail';
 
 export {
   MDeliveries,
@@ -12,4 +13,5 @@ export {
   MCandidates,
   MCandidatesAble,
   MSolutions,
+  MDetail,
 };

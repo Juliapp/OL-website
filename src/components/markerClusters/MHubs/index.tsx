@@ -6,7 +6,9 @@ import { Marker, Tooltip } from 'react-leaflet';
 
 const MHubs: React.FC = () => {
   const { hubs } = useFetchLocationData();
-  useEffect(() => {}, [hubs]);
+  useEffect(() => {
+    console.log(hubs);
+  }, [hubs]);
 
   return hubs ? (
     <>

@@ -5,11 +5,18 @@ interface IResultItem {
   index: number;
   result: number;
   attraction: number;
+  detail?: object | null;
+  itemClickHandler?: React.MouseEventHandler<HTMLDivElement> | undefined;
 }
 
-const ResultItem: React.FC<IResultItem> = ({ index, result, attraction }) => {
+const ResultItem: React.FC<IResultItem> = ({
+  index,
+  result,
+  attraction,
+  itemClickHandler,
+}) => {
   return (
-    <div className="result-item-container">
+    <div className="result-item-container" onClick={itemClickHandler}>
       <div className="result-enum">{index}.</div>
       <div className="result-grid">
         <div className="result-param">

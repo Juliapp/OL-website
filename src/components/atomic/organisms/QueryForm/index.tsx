@@ -4,6 +4,7 @@ import { FormMode } from '../../../../utils';
 import { BlockButton, DropDown, IDropDown, ResultItem } from '@atoms';
 import { IToggleSec, ToggleSec } from '../../molecules';
 import './styles.css';
+import { MDetail } from '@marker-clusters';
 
 export interface IQueryForm extends IDropDown, IToggleSec {}
 const QueryForm: React.FC<IQueryForm> = ({
@@ -12,6 +13,9 @@ const QueryForm: React.FC<IQueryForm> = ({
   onDropDownChange,
 }) => {
   const [formMode, setFormMode] = useState<FormMode>(FormMode.FORM);
+
+  const [detail, setDetail] = useState<{} | null>(null);
+
   const run = useRun();
   const active = { color: '#4E6068', borderColor: '#00BAFF' };
 
@@ -19,6 +23,13 @@ const QueryForm: React.FC<IQueryForm> = ({
 
   const result = useResult();
   useEffect(() => {}, [result]);
+
+  const clickHandler = (index: number) => {
+    const detail = result?.kSolution[index].detail;
+    if (detail) {
+      setDetail(detail);
+    }
+  };
 
   return (
     <div className="query-form">
@@ -74,10 +85,14 @@ const QueryForm: React.FC<IQueryForm> = ({
                     index={index + 1}
                     result={item.result}
                     attraction={item.attraction}
+                    // detail={item.detail}
+                    itemClickHandler={() => clickHandler(index)}
                   />
                 );
               })
             : undefined}
+
+          {detail ? <MDetail detail={detail} /> : undefined}
         </div>
       )}
     </div>
