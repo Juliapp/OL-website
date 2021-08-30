@@ -9,6 +9,8 @@ import {
   IPoint,
   IServiceRunResponse200,
 } from '../utils/types';
+import { useExecutionQuery } from '@hooks';
+import { dispatchType } from './ExecutionQueryContext';
 
 interface OLDContextType {
   algorithmDropDownOptions:
@@ -45,6 +47,8 @@ interface OLDContextType {
 export const OLDContext = createContext<OLDContextType>({} as OLDContextType);
 
 export const OLQProvider: React.FC = ({ children }) => {
+  const { executionQueryDispatch } = useExecutionQuery();
+
   const [algorithmDropDownOptions, setAlgorithmDropDownOptions] = useState<
     { id: string; value: string; label: string }[] | undefined
   >();
@@ -139,28 +143,51 @@ export const OLQProvider: React.FC = ({ children }) => {
     }
   }, [candidates.able, selectedAlgorithm, selectedId]);
 
-  const onFetchHubs = useCallback((location_id: string) => {
-    api
-      .getRegionData({
-        location_id,
-        point_type: 'hubs',
-      })
-      .then((result) => {
-        setHubs(result);
+  const onFetchHubs = useCallback(
+    (location_id: string) => {
+      const id = 'onFetchHubs';
+      executionQueryDispatch({
+        type: dispatchType.CREATE,
+        param: { id, label: 'Fetching Hubs...' },
       });
-  }, []);
 
-  const onFetchDeliveries = useCallback((location_id: string) => {
-    api
-      .getRegionData({
-        location_id,
-        point_type: 'deliveries',
-        percentage: 0.05,
-      })
-      .then((result) => {
-        setDeliveries(result);
+      api
+        .getRegionData({
+          location_id,
+          point_type: 'hubs',
+        })
+        .then((result) => {
+          setHubs(result);
+        })
+        .finally(() => {
+          executionQueryDispatch({ type: dispatchType.DELETE, param: { id } });
+        });
+    },
+    [executionQueryDispatch]
+  );
+
+  const onFetchDeliveries = useCallback(
+    (location_id: string) => {
+      const id = 'onFetchDeliveries';
+      executionQueryDispatch({
+        type: dispatchType.CREATE,
+        param: { id, label: 'Fetching Deliveries' },
       });
-  }, []);
+      api
+        .getRegionData({
+          location_id,
+          point_type: 'deliveries',
+          percentage: 0.05,
+        })
+        .then((result) => {
+          setDeliveries(result);
+        })
+        .finally(() => {
+          executionQueryDispatch({ type: dispatchType.DELETE, param: { id } });
+        });
+    },
+    [executionQueryDispatch]
+  );
 
   return (
     <OLDContext.Provider

@@ -42,6 +42,7 @@ const executionQueryReducer = (
 
   switch (type) {
     case 'CREATE':
+      console.log('creating new task');
       if (index === -1) {
         state.query.push(param);
         if (state.isEmpty) {
@@ -55,6 +56,7 @@ const executionQueryReducer = (
       }
       return state;
     case 'DELETE':
+      console.log('deleting task');
       if (index >= 0) {
         state.query.splice(index, 1);
         state.isEmpty = state.query.length === 0;
@@ -76,7 +78,7 @@ export const ExecutionQueryContextProvider: React.FC = ({ children }) => {
   >(executionQueryReducer, initialState);
 
   useEffect(() => {
-    console.log(state.isEmpty);
+    console.log(state);
   }, [state]);
 
   return (

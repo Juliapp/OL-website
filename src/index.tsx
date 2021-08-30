@@ -7,11 +7,11 @@ import { ExecutionQueryContextProvider } from 'context/ExecutionQueryContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <OLQProvider>
-      <ExecutionQueryContextProvider>
+    <ExecutionQueryContextProvider>
+      <OLQProvider>
         <App />
-      </ExecutionQueryContextProvider>
-    </OLQProvider>
+      </OLQProvider>
+    </ExecutionQueryContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

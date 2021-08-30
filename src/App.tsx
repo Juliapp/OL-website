@@ -22,13 +22,14 @@ export default function App() {
       const responseAlgorithms = await api.getAlgorithms();
       const responseAreas = await api.getAreas();
       fetch(responseAlgorithms, responseAreas);
-
-      executionQueryDispatch({
-        type: dispatchType.DELETE,
-        param: { id },
-      });
+      await new Promise((resolve) => setTimeout(resolve, 5000));
     };
     init();
+
+    executionQueryDispatch({
+      type: dispatchType.DELETE,
+      param: { id },
+    });
   }, [executionQueryDispatch, fetch]);
 
   return <Map />;

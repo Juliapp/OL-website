@@ -8,7 +8,7 @@ import { fullScreenBR, HomePageMode, mapLegend } from '../../utils';
 import { useCandidates, useExecutionQuery, useSelectId } from '@hooks';
 import { home } from '@assets';
 import DisablePropagation from './DisablaPropagation';
-import { MAreas, MCandidates, MDeliveries, MHubs } from '@marker-clusters';
+import { MRegions, MCandidates, MDeliveries, MHubs } from '@marker-clusters';
 
 const MapLeaflet: React.FC = () => {
   const [map, setMap] = useState<Map>();
@@ -25,6 +25,7 @@ const MapLeaflet: React.FC = () => {
     }
     //eslint-disable-next-line
   }, [selectedArea]);
+
   useEffect(() => {
     setLegendItems(mapLegend[mode]);
     if (mode === HomePageMode.AREA_SELECTOR) {
@@ -37,11 +38,10 @@ const MapLeaflet: React.FC = () => {
     map?.flyTo(fullScreenBR.latlng, fullScreenBR.zoom);
   };
 
-  const { isEmpty: executionIsEmpty, current } = useExecutionQuery();
-
+  const { isEmpty: executionIsEmpty } = useExecutionQuery();
   useEffect(() => {
-    console.log(current);
-  }, [current]);
+    console.log(executionIsEmpty);
+  }, [executionIsEmpty]);
 
   return (
     <MapContainer
@@ -78,7 +78,7 @@ const MapLeaflet: React.FC = () => {
         ) : (
           <div className="areaSelector">
             <WebSelectArea />
-            <MAreas />
+            <MRegions />
           </div>
         )}
 
