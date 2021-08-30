@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useAlgorithmDropDownOpions, useResult, useRun } from '@hooks';
+import {
+  useAlgorithmDropDownOpions,
+  useCandidates,
+  useResult,
+  useRun,
+} from '@hooks';
 import { FormMode } from '../../../../utils';
 import { BlockButton, DropDown, IDropDown, ResultItem } from '@atoms';
 import { IToggleSec, ToggleSec } from '../../molecules';
@@ -30,6 +35,8 @@ const QueryForm: React.FC<IQueryForm> = ({
       setDetail(detail);
     }
   };
+
+  const { onResetCandidates } = useCandidates();
 
   return (
     <div className="query-form">
@@ -72,26 +79,47 @@ const QueryForm: React.FC<IQueryForm> = ({
             BButtonLabel="Start"
             onClick={() => {
               run();
+              setFormMode(FormMode.RESULTS);
             }}
           />
         </>
       ) : (
-        <div className="results-container">
-          {result !== undefined
-            ? result.kSolution.map((item, index) => {
-                return (
-                  <ResultItem
-                    key={index}
-                    index={index + 1}
-                    result={item.result}
-                    attraction={item.attraction}
-                    // detail={item.detail}
-                    itemClickHandler={() => clickHandler(index)}
-                  />
-                );
-              })
-            : undefined}
+        <div className="results">
+          {result !== undefined ? (
+            <div className="results">
+              <div className="results-container">
+                {result.kSolution.map((item, index) => {
+                  return (
+                    <ResultItem
+                      key={index}
+                      index={index + 1}
+                      result={item.result}
+                      attraction={item.attraction}
+                      // detail={item.detail}
+                      itemClickHandler={() => clickHandler(index)}
+                    />
+                  );
+                })}
+              </div>
+              <BlockButton
+                BButtonLabel="Resetar Pesquisa"
+                onClick={() => {
+                  onResetCandidates();
+                  setFormMode(FormMode.FORM);
+                }}
+              />
+            </div>
+          ) : (
+            <h3>Não há resultados a serem exibidos</h3>
+          )}
 
+          {/* <BlockButton
+            BButtonLabel="Resetar Pesquisa"
+            onClick={() => {
+              onResetCandidates();
+              setFormMode(FormMode.FORM);
+            }}
+          /> */}
           {detail ? <MDetail detail={detail} /> : undefined}
         </div>
       )}

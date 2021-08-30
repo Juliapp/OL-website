@@ -123,6 +123,7 @@ export const OLQProvider: React.FC = ({ children }) => {
 
   const onResetCandidates = useCallback(() => {
     setCandidates({ able: [], disable: [] });
+    setRunResult(undefined);
   }, []);
 
   const onRun = useCallback(() => {

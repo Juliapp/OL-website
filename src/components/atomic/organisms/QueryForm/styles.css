@@ -28,7 +28,13 @@
 .results-container {
   display: flex;
   flex-direction: column;
-  /* gap: 8px !important; */
+  /* gap: 24px !important; */
   max-height: 30vh;
   overflow: auto;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
