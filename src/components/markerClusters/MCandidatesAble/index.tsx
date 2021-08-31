@@ -48,7 +48,6 @@ const MCandidatesAble: React.FC<IMSolution> = ({ editCandidates }) => {
           ></Marker>
         );
       })}
-      ;
     </>
   );
 };
