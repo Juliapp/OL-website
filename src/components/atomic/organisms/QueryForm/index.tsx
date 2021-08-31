@@ -112,14 +112,6 @@ const QueryForm: React.FC<IQueryForm> = ({
           ) : (
             <h3>Não há resultados a serem exibidos</h3>
           )}
-
-          {/* <BlockButton
-            BButtonLabel="Resetar Pesquisa"
-            onClick={() => {
-              onResetCandidates();
-              setFormMode(FormMode.FORM);
-            }}
-          /> */}
           {detail ? <MDetail detail={detail} /> : undefined}
         </div>
       )}

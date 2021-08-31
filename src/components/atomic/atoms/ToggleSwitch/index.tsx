@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.css';
 
 export interface IToggleSwitch {
   toggled?: boolean;
   setIsToggled?: React.Dispatch<React.SetStateAction<boolean>> | undefined;
-  // handleToggle,
 }
 
 const ToggleSwitch: React.FC<IToggleSwitch> = ({
   toggled = false,
   setIsToggled,
 }) => {
+  useEffect(() => {
+    setIsToggled?.(false);
+  }, []);
+
   return (
     <div className="switch-container">
       <input
