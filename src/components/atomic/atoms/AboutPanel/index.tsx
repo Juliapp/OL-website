@@ -44,7 +44,7 @@ const AboutPanel: React.FC<IAboutPanel> = ({ onClick }) => {
 
         <h3 className="about-text-title">Orientador</h3>
         <h3 className="about-text-content">
-          João B. Rocha-Junior | Contato: joao.rocha.jr@gmail.com
+          João B. Rocha-Junior | Contato: joao@uefs.com
         </h3>
       </div>
     </div>
