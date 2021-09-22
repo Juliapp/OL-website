@@ -12,6 +12,7 @@ const ToggleSwitch: React.FC<IToggleSwitch> = ({
 }) => {
   useEffect(() => {
     setIsToggled?.(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
