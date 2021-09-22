@@ -17,7 +17,6 @@ const MDetail: React.FC<IMDetail> = ({ detail }) => {
   try {
     // @ts-ignore: Unreachable code error
     const aux: IExample = { ...detail };
-    console.log(aux);
     return (
       <div style={{ zIndex: 2000 }}>
         {
