@@ -7,14 +7,16 @@ const api = axios.create({
 });
 
 export async function getAlgorithms() {
-  const response = await api.get<string[]>('/get-algorithms');
+  const response = await api.get<string[]>(
+    process.env.REACT_APP_API_URL + '/get-algorithms'
+  );
   console.log('getAlgorithms() ', response.data);
   return response.data;
 }
 
 export async function getAreas() {
   const response = await api.get<{ key: string; lat: number; lng: number }[]>(
-    '/get-regions'
+    process.env.REACT_APP_API_URL + '/get-regions'
   );
   console.log('getAreas() ', response.data);
   return response.data;
