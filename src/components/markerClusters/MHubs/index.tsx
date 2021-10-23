@@ -1,14 +1,11 @@
 import { loggiHub } from '@assets';
 import { useFetchLocationData } from '@hooks';
 import { icon } from 'leaflet';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
 
 const MHubs: React.FC = () => {
   const { hubs } = useFetchLocationData();
-  useEffect(() => {
-    console.log(hubs);
-  }, [hubs]);
 
   return hubs ? (
     <>
