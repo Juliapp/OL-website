@@ -21,8 +21,6 @@ export default function App() {
     const init = async () => {
       const responseAlgorithms = await api.getAlgorithms();
       const responseAreas = await api.getAreas();
-      console.log('responseAlgorithms', responseAlgorithms);
-      console.log('responseAreas', responseAreas);
       fetch(responseAlgorithms, responseAreas);
       await new Promise((resolve) => setTimeout(resolve, 5000));
     };

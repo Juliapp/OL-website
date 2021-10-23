@@ -8,6 +8,7 @@ const api = axios.create({
 
 export async function getAlgorithms() {
   const response = await api.get<string[]>('/get-algorithms');
+  console.log('getAlgorithms() ', response.data);
   return response.data;
 }
 
@@ -15,6 +16,7 @@ export async function getAreas() {
   const response = await api.get<{ key: string; lat: number; lng: number }[]>(
     '/get-regions'
   );
+  console.log('getAreas() ', response.data);
   return response.data;
 }
 interface IRunParams {

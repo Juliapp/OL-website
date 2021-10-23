@@ -3,7 +3,6 @@ import { iconCandidate, iconDelivery, loggiHub, iconArea } from '@assets';
 const fullScreenBR = { latlng: { lng: -55.0967, lat: -12.4347 }, zoom: 5 };
 
 const resolveAlgorithmOptions = (algorithms: string[]) => {
-  console.log(algorithms);
   return algorithms.map((item) => {
     var toLo = item.toLowerCase();
     return {
