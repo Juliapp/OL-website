@@ -30,7 +30,7 @@ const MAreas: React.FC = () => {
             popupAnchor: [48, 48],
           })}
         >
-          <Tooltip>{`Area ID: ${area.key}`}</Tooltip>
+          <Tooltip>{`Region ID: ${area.key}`}</Tooltip>
         </Marker>
       ))}
     </>
