@@ -1,13 +1,9 @@
 import axios from 'axios';
-import https from 'https';
 
 import { ICandidate, IPoint, IServiceRunResponse200 } from '../utils/types';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  httpsAgent: new https.Agent({
-    rejectUnauthorized: false,
-  }),
 });
 
 export async function getAlgorithms() {
