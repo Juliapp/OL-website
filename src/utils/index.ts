@@ -24,7 +24,7 @@ enum FormMode {
 }
 
 const mapLegend = {
-  AREA_SELECTOR: [{ icon: iconArea, label: 'Polos da Loggi' }],
+  AREA_SELECTOR: [{ icon: iconArea, label: 'Regiões da Loggi' }],
   QUERY_FORM: [
     { icon: loggiHub, label: 'Hubs atuais' },
     { icon: iconDelivery, label: 'Deliveries' },
