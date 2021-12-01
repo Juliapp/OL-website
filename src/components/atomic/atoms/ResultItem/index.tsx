@@ -22,7 +22,7 @@ const ResultItem: React.FC<IResultItem> = ({
         <div className="result-param">
           Resultado
           <div className="result-number">
-            {result.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+            {parseInt((result / 1000).toFixed()).toLocaleString('pt-BR')}
           </div>
         </div>
         <div className="result-param">
