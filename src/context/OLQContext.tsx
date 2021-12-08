@@ -135,8 +135,8 @@ export const OLQProvider: React.FC = ({ children }) => {
       });
       api
         .run({
-          location_id: selectedId.key,
-          // location_id: 'test',
+          // location_id: selectedId.key,
+          location_id: 'test',
           candidates: candidates.able,
           algorithm: selectedAlgorithm,
           k: candidates.able.length,
